@@ -1,0 +1,13 @@
+This program transform svg file with halls and lighthouses
+to *.json file which contains coordinates of the halls and
+lighthouses.
+
+Commands:
+  -h - gets this message;
+  -f - svg file;
+  -o - place where do you want to place the output file,
+if -o doesn't exist the output will be placed in the ./output directory,
+if you don't pass path that ends with a filename then a filename will be
+equal to the input filename without the extension;
+
+Name of output file is name of input with .json extention.
