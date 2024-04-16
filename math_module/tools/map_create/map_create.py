@@ -68,11 +68,11 @@ def main():
   
   root = tree.getroot()
 
-  if root[0].tag.find('style') == -1:
+  if root.find('{http://www.w3.org/2000/svg}style') == None:
     print(f"File {args['-f']['data']} does not contain a style tag")
     sys.exit(1)
 
-  style = cssutils.parseString(root[0].text, validate=False)
+  style = cssutils.parseString(root.find('{http://www.w3.org/2000/svg}style').text, validate=False)
 
   if len(style.cssRules) == 0:
     print(f"File {args['-f']['data']} does not contain any rules")
@@ -97,17 +97,23 @@ def main():
     'bounds': {
       'width': root.attrib['viewBox'].split(' ')[2],
       'height': root.attrib['viewBox'].split(' ')[3],
+      'scale': 0,
     },
-    'halls': [],
-    'lighthouses': [],
+    'halls': {},
+    'lighthouses': {},
   }
 
-  for rect in root[1:]:
-    if rect.tag.find('rect') == -1:
-      continue
+  text_scale = root.find('{http://www.w3.org/2000/svg}text')
 
-    x = float(rect.attrib['x'])
-    y = float(rect.attrib['y'])
+  if text_scale is None:
+    print(f"File {args['-f']['data']} does not contain a text tag with scale in it.")
+    sys.exit(1)
+
+  coordinates['bounds']['scale'] = float(text_scale.text.split('=')[1])
+
+  for rect in root.findall('{http://www.w3.org/2000/svg}rect'):
+    x = float(rect.attrib.get('x', 0))
+    y = float(rect.attrib.get('y', 0))
     width = float(rect.attrib['width'])
     height = float(rect.attrib['height'])
     id = rect.attrib['id']
@@ -119,27 +125,36 @@ def main():
       elif id[-3:] == 'hor':
         baseline = y + height / 2
       else:
-        print(f"File {args['-f']['data']} contains wrong id {id} notation.")
+        print(f"File {args['-f']['data']} contains wrong id {id} notation for hall.")
         sys.exit(1)
 
-      coordinates['halls'].append({
+      coordinates['halls'][id] = {
         'id': id,
         'x': x,
         'y': y,
         'width': width,
         'height': height,
         'baseline': baseline,
-      })
+      }
     elif classifier == classes['lighthouse']:
       center = (x + width / 2, y + height / 2)
 
-      coordinates['lighthouses'].append({
+      coordinates['lighthouses'][id] = {
         'id': id,
         'x': center[0],
         'y': center[1],
-      })
+      }
     else:
       print(f"File {args['-f']['data']} contains an unknown class {classifier}")
+      sys.exit(1)
+  
+  for _, lighthouse in coordinates['lighthouses'].items():
+    for _, hall in coordinates['halls'].items():
+      if hall['x'] <= lighthouse['x'] <= hall['x'] + hall['width'] and hall['y'] <= lighthouse['y'] <= hall['y'] + hall['height']:
+        lighthouse['hall'] = hall['id']
+    
+    if lighthouse.get('hall') is None:
+      print(f"File {args['-f']['data']} contains a lighthouse that does not belong to any hall.")
       sys.exit(1)
 
   if args['-o']['exists']:
