@@ -1,0 +1,38 @@
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+body {
+  display: flex;
+}
+
+table {
+  font-family: 'Lucida Sans Unicode';
+  font-size: 14px;
+  background: white;
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  color: #7D7B78;
+  border-bottom: 2px solid #e9e9e7;
+  padding: 10px 8px;
+}
+
+td {
+  border: 2px solid #e9e9e7;
+  color: #000000;
+  padding: 9px 8px;
+}
+
+img {
+  max-width: 1em;
+  margin-right: 0.5em;
+}
