@@ -1,21 +1,24 @@
 <?php
 
+namespace App\Controller;
 
-require 'vendor/autoload.php';
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Predis;
 
-class GetAll extends AbstractController
+class GetAllFromRedis extends AbstractController
 {
     #[Route('api/getall', methods: ['GET', 'POST'])]
-    public function getAll()
+    public function getAll(): Response
     {
         $redis = new Predis\Client();
-        $x_pos = $redis->get('x');
-        $y_pos = $redis->get('y');
-        $posts = array($x_pos, $y_pos);
+        $keys = $redis->keys('*');
+        $posts = array();
+        foreach ($keys as $key) {
+            $posts[] = array('mac' => $key) + $redis->hgetall($key);
+        }
         return $this->json($posts);
     }
 }
