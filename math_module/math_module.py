@@ -3,9 +3,9 @@ import sys
 import asyncio
 import signal
 from src.compute import Shared
+from src.compute import computer
 from src.mqtt import connect_mqtt
 from config import CONFIG
-from src.const_correction import create_observer
 
 
 def raise_system_exit():
@@ -36,7 +36,6 @@ def main():
 
   # Creating asyncio event loop
   loop = asyncio.new_event_loop()
-  stop_event = asyncio.Event()
   
   MQTT_HOST = CONFIG['MQTT']['HOST']
   MQTT_PORT = CONFIG['MQTT']['PORT']
@@ -62,7 +61,7 @@ def main():
     print(f"Unimplemented signal has tried to be handled")
   
   try:
-    # loop.run_until_complete(create_observer(stop_event, CONFIG['CALC']))
+    loop.run_until_complete(computer(CONFIG, shared))
     loop.run_forever()
   except (KeyboardInterrupt, SystemExit):
     print("Tring to stop program execution")
@@ -77,7 +76,7 @@ def main():
       sys.exit(1)
     
     # Stopping all the corutines
-    stop_event.set()
+    shared.event_stop.set()
 
 
 if __name__ == "__main__":
