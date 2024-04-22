@@ -1,23 +1,27 @@
-<script>
-export default {
-  data() {
-    return {
-      devices: [],
-      device_name: '',
-      x_coord: '',
-      y_coord: ''
-    }
-  },
-  methods: {
-    addDevice() {
-      this.devices.push({
-        device_name: this.device_name,
-        x_coord: this.x_coord,
-        y_coord: this.y_coord
-      })
-    }
-  }
-}
+<script setup>
+import { ref, onMounted } from "vue";
+
+const devices = ref([]);
+
+onMounted(() => {
+  setTimeout(function get() {
+    new Promise((res) => {
+      fetch("http://192.168.1.149/api/getall")
+      .then((resp) => resp.json())
+      .then((data) => {
+        devices.value = Object.entries(data[0]).slice(1);
+
+        for (let i = 0; i < devices.value.length; i++) {
+          devices.value[i][1] = JSON.parse(devices.value[i][1]);
+        }
+
+        res();
+        setTimeout(get, 500);
+       })
+    })
+  }, 500);
+});
+
 </script>
 
 <template>
@@ -34,24 +38,19 @@ export default {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(device, index) in devices" :key="index">
+      <tr v-for="[mac, {x, y}] of devices" :key="mac">
         <td>
-          {{ device.device_name }}
+          {{ mac }}
         </td>
         <td>
-          {{ device.x_coord }}
+          {{ x }}
         </td>
         <td>
-          {{ device.y_coord }}
+          {{ y }}
         </td>
       </tr>
     </tbody>
   </table>
-
-  <input type="text" v-model="device_name" />
-  <input type="text" v-model="x_coord" />
-  <input type="text" v-model="y_coord" />
-  <button @click="addDevice()">add</button>
 </template>
 
 <style scoped>
