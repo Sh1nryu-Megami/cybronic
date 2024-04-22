@@ -7,6 +7,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nelmio/cors-bundle": "^2.4",
         "predis/predis": "^2.2",
         "symfony/cache": "7.0.*",
         "symfony/console": "7.0.*",

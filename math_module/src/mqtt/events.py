@@ -36,6 +36,7 @@ def on_message(client, user_data: dict, message: mqtt.MQTTMessage):
     'device': payload['mc'],
     'lighthouse': message.topic.split('/')[1],
   })
+  # print(len(user_data['shared'].input_queue))
   lock.release()
 
   print(f"Lighthouse: {message.topic.split('/')[1]}; Distance to {payload['mc']} is {round(get_distance(payload['rs'], payload['r1'], CALC) * 1000) / 1000}m", end="\r")

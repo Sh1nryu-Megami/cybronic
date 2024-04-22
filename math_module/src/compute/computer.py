@@ -11,6 +11,7 @@ async def computer(config: dict, shared: Shared) -> None:
   store = Store(config['COMPUTER'], layout)
   
   while True:
+
     if shared.event_stop.is_set():
       return
     
@@ -23,9 +24,11 @@ async def computer(config: dict, shared: Shared) -> None:
     shared.input_queue.clear()
     shared.lock.release()
 
+
     for item in input_data:
       res = store.add(item['device'], item['lighthouse'], item['distance'])
 
       if res['x'] != -1:
         shared.output[item['device']] = res
+        
       

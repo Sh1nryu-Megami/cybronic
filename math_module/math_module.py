@@ -5,6 +5,7 @@ import signal
 from src.compute import Shared
 from src.compute import computer
 from src.mqtt import connect_mqtt
+from src.db import connect_redis
 from config import CONFIG
 
 
@@ -23,6 +24,14 @@ def parseArgv() -> dict[dict]:
       arguments[arg]['exists'] = True
 
   return arguments
+
+
+async def main_loop(CONFIG: dict, shared: Shared) -> None:
+  await asyncio.gather(
+    computer(CONFIG, shared),
+    connect_redis(CONFIG, shared)
+  )
+
 
 def main():
   args = parseArgv()
@@ -61,8 +70,7 @@ def main():
     print(f"Unimplemented signal has tried to be handled")
   
   try:
-    loop.run_until_complete(computer(CONFIG, shared))
-    loop.run_forever()
+    loop.run_until_complete(main_loop(CONFIG, shared))
   except (KeyboardInterrupt, SystemExit):
     print("Tring to stop program execution")
 

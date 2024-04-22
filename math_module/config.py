@@ -17,7 +17,16 @@ CONFIG = {
 
   # Constants for computing person position
   'COMPUTER': {
-    'LAYOUT_FILE': './tools/map_create/output/test.json',
+    # 'LAYOUT_FILE': './tools/map_create/output/test.json',
+    'LAYOUT_FILE': 'E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\test.json',
     'HISTORY_INTERVAL': 3,
+  },
+
+  # Constants for redis connection
+  'REDIS': {
+    'HOST': "localhost",
+    'PORT': 6379,
+    'DB': 0,
+    'PASSWORD': None,
   },
 }

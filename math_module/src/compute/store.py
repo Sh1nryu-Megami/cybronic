@@ -19,7 +19,8 @@ class Store:
     else:
       position = self._positions[mc]
       if len(position['points']) != 2:
-        position['points'].append(lighthouse)
+        if position['points'][0] != lighthouse:
+          position['points'].append(lighthouse)
         return False
       
       cur_dis = self._history[(mc, lighthouse)]['average']
@@ -27,11 +28,13 @@ class Store:
       point2 = self._history[(mc, position['points'][1])]['average']
 
       if cur_dis < point1:
-        position['points'][0] = lighthouse
-        point1 = cur_dis
+        if position['points'][1] != lighthouse:
+          position['points'][0] = lighthouse
+          point1 = cur_dis
       elif cur_dis < point2:
-        position['points'][1] = lighthouse
-        point2 = cur_dis
+        if position['points'][0] != lighthouse:
+          position['points'][1] = lighthouse
+          point2 = cur_dis
       else:
         return False
     
@@ -157,8 +160,11 @@ class Store:
       item['average'] = sum(dest_item['distance'] for dest_item in item['distance']) / len(item['distance'])
     
     if self._shift(mc, lighthouse):
-      self._calculate(mc, lighthouse)
-      return self._positions[mc]
+      self._calculate(mc)
+      return {
+        'x': self._positions[mc]['x'],
+        'y': self._positions[mc]['y'],
+      }
     else:
       return {
         'x': -1,

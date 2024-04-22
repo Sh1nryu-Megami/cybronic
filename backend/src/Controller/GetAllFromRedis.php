@@ -14,7 +14,7 @@ class GetAllFromRedis extends AbstractController
     public function getAll(): Response
     {
         $redis = new Predis\Client();
-        $keys = $redis->keys('*');
+        $keys = $redis->keys('users');
         $posts = array();
         foreach ($keys as $key) {
             $posts[] = array('mac' => $key) + $redis->hgetall($key);
