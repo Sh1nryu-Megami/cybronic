@@ -1,13 +1,11 @@
 <script setup>
-import BottomMenu from './components/BottomMenu.vue';
-
+import BottomMenu from './components/BottomMenu.vue'
+import BackgroundMap from './components/BackgroundMap.vue'
 </script>
 
 <template>
-<BottomMenu />
+  <BackgroundMap />
+  <BottomMenu />
 </template>
 
-<style module lang="scss">
-
-
-</style>
+<style module lang="scss"></style>

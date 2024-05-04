@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
     "pinia": "^2.1.7",
     "sass": "^1.76.0",
     "vue": "^3.4.21"
