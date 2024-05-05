@@ -1,6 +1,12 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
-import { ref } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
+import { ref } from 'vue';
+import {
+  setStartPosWrapper,
+  setEndPosWrapper,
+  setCancelPosWrapper,
+  setMovePosWrapper,
+} from '/src/handlers/bgMapHandler';
 
 const img_ref = ref()
 const position_data = ref({
@@ -12,25 +18,32 @@ const position_data = ref({
     h: 0
   },
   startFingers: [],
-  endFingers: [],
-  img_ref: img_ref
-})
+});
+const handlers = ref({
+    start: setStartPosWrapper(position_data),
+    end: setEndPosWrapper(position_data),
+    cancel: setCancelPosWrapper(position_data),
+    move: setMovePosWrapper(position_data),
+});
 
 onMounted(() => {
-  img_ref.value.addEventListener('touchstart', setStartPosWrapper(position_data))
-  img_ref.value.addEventListener('touchend', setEndPosWrapper(position_data))
-  img_ref.value.addEventListener('touchmove', setMovePosWrapper(position_data))
-  img_ref.value.addEventListener('touchcancel', setCancelPosWrapper(position_data))
-})
+  img_ref.value.addEventListener('touchstart', handlers.value.start);
+  document.addEventListener('touchend', handlers.value.end);
+  img_ref.value.addEventListener('touchmove', handlers.value.move);
+  document.addEventListener('touchcancel', handlers.value.cancel);
+});
 
-// onUnmounted(() => {
-//   img_ref.value.removeEventListener('touchstart')
-// })
+onBeforeUnmount(() => {
+  img_ref.value.removeEventListener('touchstart', handlers.value.start);
+  document.removeEventListener('touchend', handlers.value.end);
+  img_ref.value.removeEventListener('touchmove', handlers.value.move);
+  document.removeEventListener('touchcancel', handlers.value.cancel);
+});
 </script>
 
 <template>
-  <div class="$style.bg_map">
-    <img src="../assets/map_tmp.svg" ref="img_ref" />
+  <div :class="$style.bg_map" ref="img_ref">
+    <img id="map" src="../assets/map_tmp.svg" />
   </div>
 </template>
 
@@ -40,11 +53,16 @@ onMounted(() => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  touch-action: none;
+
   & > img {
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    position: relative;
+    top: 50px;
+    left: 5px;
   }
 }
 </style>

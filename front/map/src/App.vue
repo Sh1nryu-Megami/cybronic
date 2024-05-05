@@ -6,6 +6,9 @@ import BackgroundMap from './components/BackgroundMap.vue'
 <template>
   <BackgroundMap />
   <BottomMenu />
+  <!-- <div id="log" style="color: white;">0</div> -->
 </template>
 
-<style module lang="scss"></style>
+<style module lang="scss">
+
+</style>
