@@ -57,7 +57,8 @@ export function setMovePosWrapper(position_data) {
   function setMovePos(event) {
     event.preventDefault();
     console.log("TMove");
-
+    position_data.value.updated = true;
+    
     if (position_data.value.touched == false) {
       console.log("TMove return");
       return;
