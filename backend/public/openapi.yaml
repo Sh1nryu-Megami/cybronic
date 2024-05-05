@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Test API
+  version: '1.0'
+servers:
+  - url: http://localhost:8000/api/
+    description: Dev server
+paths:
+  /getall:
+    get:
+      summary: Fetch all records from Redis
+      tags:
+        - Records
+      operationId: getall
+      responses:
+        '200':
+          description: Successful get
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Distances"
+        'default':
+          description: Unhandled exception
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+#   post:
+#     summary: Create new record
+#     tags:
+#       - Records
+#     operationId: Create
+#     requestBody:
+#       required: True
+#       content:
+#         application/json:
+#             schema:
+#               $ref: "#/components/schemas/Value"
+#     responses:
+#       '200':
+#         description: Successful create
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/Distances"
+#       'default':
+#         description: Unhandled exception
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/Error"
+# /getall/{distance_keys}:
+#   delete:
+#     summary: Delete record
+#     tags:
+#       - Records
+#     operationId: DeleteById
+#     parameters: 
+#       - name: distance_keys
+#         in: path
+#         required: True
+#         description: identifier
+#         schema:
+#           type: string
+#         example: '1'
+#     responses:
+#       '200':
+#         description: Successful delete
+#         content:
+#           application/json: {}
+#       'default':
+#         description: Unhandled exception
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Value:
+      type: object
+      required:
+        - keys
+        - values
+      properties:
+        keys:
+          type: string
+          example: '1'
+        values:
+          type: string
+          example: 'a'
+    Distances:
+      type: array
+      items:
+        $ref: "#/components/schemas/Value"
+    Error:
+      type: integer
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
