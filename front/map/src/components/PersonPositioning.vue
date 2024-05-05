@@ -3,7 +3,7 @@ import { ref, onMounted, watch } from 'vue'
 import $ from 'jquery'
 
 const devices = ref([])
-const img_ref = ref()
+const props = defineProps(['map'])
 
 onMounted(() => {
   setTimeout(function get() {
@@ -23,17 +23,23 @@ onMounted(() => {
   }, 500)
 })
 
-watch(devices, (shiftPoint) => {
-  let position = devices.value[0][1];
-  let x_pos = position.x;
-  let y_pos = position.y;
-  $('#point').offset({ left: x_pos, top: y_pos });
+watch(() => ({devices: devices.value, updated: props.map.updated}), (shiftPoint) => {
+  props.map.updated = false;
+  for (let [mac, {x, y}] of devices.value) {
+    let x_pos = x;
+    let y_pos = y;
+    let map_pos = $('#map').offset();
+    $('#point' + mac).offset({left: map_pos.left + x_pos, top: map_pos.top + y_pos})
+  }
+  
 })
+
 </script>
 
 <template>
-  <div :class="$style.personPoint" ref="img_ref">
-    <img id="point" src="/src/assets/person.svg" />
+  
+  <div v-for="[mac, _] of devices" :key="mac" :class="$style.personPoint">
+    <img :id="'point' + mac" src="/src/assets/person.svg" />
   </div>
 </template>
 
@@ -53,8 +59,8 @@ watch(devices, (shiftPoint) => {
     width: 2%;
     height: 1%;
     position: relative;
-    top: 50px;
-    left: 5px;
+    top: 0;
+    left: 0;
   }
 }
 </style>

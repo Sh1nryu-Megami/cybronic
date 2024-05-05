@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, watch } from 'vue'
 import { ref } from 'vue';
 import {
   setStartPosWrapper,
@@ -7,6 +7,7 @@ import {
   setCancelPosWrapper,
   setMovePosWrapper,
 } from '/src/handlers/bgMapHandler';
+import PersonPositioning from './PersonPositioning.vue';
 
 const img_ref = ref()
 const position_data = ref({
@@ -18,6 +19,7 @@ const position_data = ref({
     h: 0
   },
   startFingers: [],
+  updated: false,
 });
 const handlers = ref({
     start: setStartPosWrapper(position_data),
@@ -44,6 +46,7 @@ onBeforeUnmount(() => {
 <template>
   <div :class="$style.bg_map" ref="img_ref">
     <img id="map" src="../assets/map_tmp.svg" />
+    <PersonPositioning :map="position_data" />
   </div>
 </template>
 
