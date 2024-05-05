@@ -27,7 +27,8 @@ defineProps({
   width: 100%;
   padding: 5px;
   box-sizing: border-box;
-
+  border-radius: 20px;
+  
 }
 
 </style>
