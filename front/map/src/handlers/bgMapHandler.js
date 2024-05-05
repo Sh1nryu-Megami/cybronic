@@ -5,8 +5,8 @@ export function setStartPosWrapper(position_data) {
     event.preventDefault()
     let fingers = []
     for (let touch of event.touches) {
-      let x = touch.clientX 
-      let y = touch.clientY 
+      let x = touch.pageX 
+      let y = touch.pageY 
       fingers.push({ x, y })
     }
     position_data.value.startFingers = fingers;
@@ -66,8 +66,8 @@ export function setMovePosWrapper(position_data) {
     let currOffset = $("#map");
     let fingers = []
     for (let touch of event.touches) {
-      let x = touch.clientX
-      let y = touch.clientY
+      let x = touch.pageX
+      let y = touch.pageY
       fingers.push({ x, y })
     }
     if (position_data.value.startFingers.length >= 2) {
@@ -85,8 +85,8 @@ export function setMovePosWrapper(position_data) {
       let newMidX = (newFirstX + newSecondX) / 2
       let newMidY = (newFirstY + newSecondY) / 2
 
-      let shiftX = newMidX - oldMidX;
-      let shiftY = newMidY - oldMidY;
+      // let shiftX = newMidX - oldMidX;
+      // let shiftY = newMidY - oldMidY;
       let ratio;
       try {
         ratio = Math.sqrt((newSecondX - newFirstX) ** 2 + (newSecondY - newFirstY) ** 2) /
@@ -95,19 +95,29 @@ export function setMovePosWrapper(position_data) {
         console.log(e);
         return;
       }
+
+      let newWidth = position_data.value.map.w * ratio;
+      let newHeight = position_data.value.map.h * ratio;
+      let midXratio = (oldMidX - position_data.value.map.x) / position_data.value.map.w;
+      let midYratio = (oldMidY - position_data.value.map.y) / position_data.value.map.h;
+      let midOffsetW = newWidth * midXratio;
+      let midOffsetH = newHeight * midYratio;
+
+      let newMapPosX = -midOffsetW + oldMidX;
+      let newMapPosY = -midOffsetH + oldMidY;
+
+      newMapPosX += newMidX - oldMidX;
+      newMapPosY += newMidY - oldMidY;
       // shiftX *= ratio;
       // shiftY *= ratio;
 
-      let tmpMap = Object.assign({}, position_data.value.map);
-      tmpMap.w *= ratio;
-      tmpMap.h *= ratio;
-      let screenWidthOffset = (tmpMap.w - position_data.value.map.w) / 2;
-      let screenHeightOffset = (tmpMap.h - position_data.value.map.h) / 2;
-      shiftX -= screenWidthOffset;
-      shiftY -= screenHeightOffset;
-      currOffset.offset({ left: shiftX + position_data.value.map.x, top: shiftY + position_data.value.map.y })
-      currOffset.width(position_data.value.map.w * ratio)
-      currOffset.height(position_data.value.map.h * ratio)
+      // let screenWidthOffset = position_data.value.map.w * (ratio - 1) / 2;
+      // let screenHeightOffset = position_data.value.map.h * (ratio - 1) /2;
+      // shiftX -= screenWidthOffset;
+      // shiftY -= screenHeightOffset;
+      currOffset.offset({ left: newMapPosX, top: newMapPosY });
+      currOffset.width(newWidth)
+      currOffset.height(newHeight)
     }
     if (position_data.value.startFingers.length == 1) {
       let oldX = position_data.value.startFingers[0].x
