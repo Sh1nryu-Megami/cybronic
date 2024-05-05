@@ -17,7 +17,7 @@ class GetAllFromRedis extends AbstractController
         $keys = $redis->keys('users');
         $posts = array();
         foreach ($keys as $key) {
-            $posts[] = array('mac' => $key) + $redis->hgetall($key);
+            $posts[] = $redis->hgetall($key);
         }
         return $this->json($posts);
     }
