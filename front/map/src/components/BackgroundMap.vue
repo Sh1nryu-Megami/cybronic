@@ -59,10 +59,10 @@ onBeforeUnmount(() => {
   touch-action: none;
 
   & > img {
-    width: 60%;
+    height: 60%;
     position: relative;
-    top: 50px;
-    left: 5px;
+    top: 10%;
+    left: 0;
   }
 }
 </style>
