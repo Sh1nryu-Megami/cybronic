@@ -10,8 +10,8 @@ export function setStartPosWrapper(position_data) {
       fingers.push({ x, y })
     }
     position_data.value.startFingers = fingers;
-    console.log("Tstart");
-    console.log(fingers);
+    // console.log("Tstart");
+    // console.log(fingers);
 
     if (position_data.value.touched == false) {
       let map = $("#map");
@@ -20,7 +20,8 @@ export function setStartPosWrapper(position_data) {
       position_data.value.map.y = offset.top;
       position_data.value.map.w = map.width();
       position_data.value.map.h = map.height();
-      console.log("Set Map");
+      console.log(map.css('transform'))
+      // console.log("Set Map");
     }
     position_data.value.touched = true;
   }
@@ -30,11 +31,11 @@ export function setStartPosWrapper(position_data) {
 export function setEndPosWrapper(position_data) {
   function setEndPos(event) {
     event.preventDefault()
-    console.log("TEnd");
+    // console.log("TEnd");
 
     if (event.touches.length == 0) {
       position_data.value.touched = false;
-      console.log("TEnd Set t false");
+      // console.log("TEnd Set t false");
     }
   }
   return setEndPos
@@ -43,11 +44,11 @@ export function setEndPosWrapper(position_data) {
 export function setCancelPosWrapper(position_data) {
   function setCancelPos(event) {
     event.preventDefault()
-    console.log("TCancel");
+    // console.log("TCancel");
 
     if (event.touches.length == 0) {
       position_data.value.touched = false;
-      console.log("TCancel Set t false");
+      // console.log("TCancel Set t false");
     }
   }
   return setCancelPos
@@ -56,10 +57,10 @@ export function setCancelPosWrapper(position_data) {
 export function setMovePosWrapper(position_data) {
   function setMovePos(event) {
     event.preventDefault();
-    console.log("TMove");
+    // console.log("TMove");
 
     if (position_data.value.touched == false) {
-      console.log("TMove return");
+      // console.log("TMove return");
       return;
     }
 
@@ -85,8 +86,6 @@ export function setMovePosWrapper(position_data) {
       let newMidX = (newFirstX + newSecondX) / 2
       let newMidY = (newFirstY + newSecondY) / 2
 
-      // let shiftX = newMidX - oldMidX;
-      // let shiftY = newMidY - oldMidY;
       let ratio;
       try {
         ratio = Math.sqrt((newSecondX - newFirstX) ** 2 + (newSecondY - newFirstY) ** 2) /
@@ -108,13 +107,11 @@ export function setMovePosWrapper(position_data) {
 
       newMapPosX += newMidX - oldMidX;
       newMapPosY += newMidY - oldMidY;
-      // shiftX *= ratio;
-      // shiftY *= ratio;
 
-      // let screenWidthOffset = position_data.value.map.w * (ratio - 1) / 2;
-      // let screenHeightOffset = position_data.value.map.h * (ratio - 1) /2;
-      // shiftX -= screenWidthOffset;
-      // shiftY -= screenHeightOffset;
+      let angle = ((oldFirstX - oldSecondX) * (newFirstX - newSecondX) + (oldFirstY - oldSecondY) * (newFirstY - newSecondY)) /
+                  (((oldFirstX - oldSecondX) ** 2 + (oldFirstY - oldSecondY) ** 2) ** 0.5 * ((newFirstX - newSecondX) ** 2 + (newFirstY - newSecondY) ** 2) ** 0.5)
+      $("#log").text(angle)
+
       currOffset.offset({ left: newMapPosX, top: newMapPosY });
       currOffset.width(newWidth)
       currOffset.height(newHeight)

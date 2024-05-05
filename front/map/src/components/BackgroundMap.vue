@@ -63,6 +63,7 @@ onBeforeUnmount(() => {
     position: relative;
     top: 10%;
     left: 0;
+    transform: rotate(0deg);
   }
 }
 </style>
