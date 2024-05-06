@@ -15,6 +15,7 @@ async def connect_redis(config: dict, shared: Shared) -> None:
   print('Redis connection established')
 
   r.set('map', os.path.abspath(config['COMPUTER']['LAYOUT_FILE']))
+  r.set('view', os.path.abspath(config['COMPUTER']['VIEW_FILE']))
 
   while True:
 

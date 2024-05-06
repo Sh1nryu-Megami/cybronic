@@ -20,7 +20,7 @@ export function setStartPosWrapper(position_data) {
       position_data.value.map.y = offset.top;
       position_data.value.map.w = map.width();
       position_data.value.map.h = map.height();
-      console.log(map.css('transform'))
+      // console.log(map.css('transform'))
       // console.log("Set Map");
     }
     position_data.value.touched = true;
@@ -57,14 +57,9 @@ export function setCancelPosWrapper(position_data) {
 export function setMovePosWrapper(position_data) {
   function setMovePos(event) {
     event.preventDefault();
-<<<<<<< HEAD
     // console.log("TMove");
+    position_data.value.updated = !position_data.value.updated;
 
-=======
-    console.log("TMove");
-    position_data.value.updated = true;
-    
->>>>>>> 266968eec0d08627e8eb7599e4d754898e236648
     if (position_data.value.touched == false) {
       // console.log("TMove return");
       return;
@@ -114,9 +109,9 @@ export function setMovePosWrapper(position_data) {
       newMapPosX += newMidX - oldMidX;
       newMapPosY += newMidY - oldMidY;
 
-      let angle = ((oldFirstX - oldSecondX) * (newFirstX - newSecondX) + (oldFirstY - oldSecondY) * (newFirstY - newSecondY)) /
-                  (((oldFirstX - oldSecondX) ** 2 + (oldFirstY - oldSecondY) ** 2) ** 0.5 * ((newFirstX - newSecondX) ** 2 + (newFirstY - newSecondY) ** 2) ** 0.5)
-      $("#log").text(angle)
+      // let angle = ((oldFirstX - oldSecondX) * (newFirstX - newSecondX) + (oldFirstY - oldSecondY) * (newFirstY - newSecondY)) /
+      //             (((oldFirstX - oldSecondX) ** 2 + (oldFirstY - oldSecondY) ** 2) ** 0.5 * ((newFirstX - newSecondX) ** 2 + (newFirstY - newSecondY) ** 2) ** 0.5)
+      // $("#log").text(angle)
 
       currOffset.offset({ left: newMapPosX, top: newMapPosY });
       currOffset.width(newWidth)
@@ -133,4 +128,13 @@ export function setMovePosWrapper(position_data) {
     }
   }
   return setMovePos
+}
+
+
+export function onResizeWrapper(position_data) {
+  function onResize() {
+    position_data.value.updated = !position_data.value.updated;
+  }
+
+  return onResize;
 }

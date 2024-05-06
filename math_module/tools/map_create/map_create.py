@@ -13,6 +13,7 @@ def parseArgv() -> dict[dict]:
   arguments = {
     '-h': {
       'exists': False,
+      'single': True,
     },
     '-o': {
       'exists': False,
@@ -27,11 +28,13 @@ def parseArgv() -> dict[dict]:
   for index, arg in enumerate(sys.argv):
     if arg in arguments:
       arguments[arg]['exists'] = True
-      try:
-        arguments[arg]['data'] = sys.argv[index + 1]
-      except IndexError:
-        print(f"Argument {arg} requires an argument")
-        sys.exit(1)
+
+      if 'single' not in arguments[arg]:
+        try:
+          arguments[arg]['data'] = sys.argv[index + 1]
+        except IndexError:
+          print(f"Argument {arg} requires an argument")
+          sys.exit(1)
       
   return arguments
 
@@ -45,6 +48,21 @@ def exclude_file_extantion(filename: str) -> str:
     return filename
   
   return filename[:start]
+
+
+def svg_find(root, tag, all=False):
+  res = []
+  for item in root.iter():
+    if item.tag.endswith(tag):
+      if all:
+        res.append(item)
+      else:
+        return item
+  
+  if all:
+    return res
+  else:
+    return None
 
 
 def main():
@@ -68,11 +86,11 @@ def main():
   
   root = tree.getroot()
 
-  if root.find('{http://www.w3.org/2000/svg}style') == None:
+  if svg_find(root, 'style') == None:
     print(f"File {args['-f']['data']} does not contain a style tag")
     sys.exit(1)
-
-  style = cssutils.parseString(root.find('{http://www.w3.org/2000/svg}style').text, validate=False)
+  else:
+    style = cssutils.parseString(svg_find(root, 'style').text, validate=False)
 
   if len(style.cssRules) == 0:
     print(f"File {args['-f']['data']} does not contain any rules")
@@ -84,9 +102,9 @@ def main():
   }
 
   for rule in style.cssRules:
-    if rule.style.cssText[-7:] == config.HALL_COLOR:
+    if rule.style.cssText[-7:].lower() == config.HALL_COLOR.lower():
       classes['hall'] = rule.selectorText[1:]
-    elif rule.style.cssText[-7:] == config.LIGHTHOUSE_COLOR:
+    elif rule.style.cssText[-7:].lower() == config.LIGHTHOUSE_COLOR.lower():
       classes['lighthouse'] = rule.selectorText[1:]
   
   if classes['hall'] is None or classes['lighthouse'] is None:
@@ -103,7 +121,7 @@ def main():
     'lighthouses': {},
   }
 
-  text_scale = root.find('{http://www.w3.org/2000/svg}text')
+  text_scale = svg_find(root, 'text')
 
   if text_scale is None:
     print(f"File {args['-f']['data']} does not contain a text tag with scale in it.")
@@ -111,7 +129,7 @@ def main():
 
   coordinates['bounds']['scale'] = float(text_scale.text.split('=')[1])
 
-  for rect in root.findall('{http://www.w3.org/2000/svg}rect'):
+  for rect in svg_find(root, 'rect', True):
     x = float(rect.attrib.get('x', 0))
     y = float(rect.attrib.get('y', 0))
     width = float(rect.attrib['width'])

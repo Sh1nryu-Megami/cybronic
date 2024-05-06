@@ -138,7 +138,7 @@ class Store:
         """
 
         scale = self._layout['bounds']['scale']
-        distance = distance / scale
+        distance = distance * scale
 
         if (mc, lighthouse) not in self._history:
             self._history[(mc, lighthouse)] = {
@@ -150,24 +150,25 @@ class Store:
                 'average': distance
             }
         else:
-            item = self._history[(mc, lighthouse)]
-            cur_time = time.time()
-            item['distance'].append({
-                'distance': distance,
-                'time': cur_time,
-            })
+            self._history[(mc, lighthouse)]['average'] = distance
+            # item = self._history[(mc, lighthouse)]
+            # cur_time = time.time()
+            # item['distance'].append({
+            #     'distance': distance,
+            #     'time': cur_time,
+            # })
 
-            if cur_time - item['last_time'] > self._history_interval:
-                for idx, dest_item in enumerate(item['distance']):
-                    if cur_time - dest_item['time'] <= self._history_interval:
-                        index = idx
-                        break
+            # if cur_time - item['last_time'] > self._history_interval:
+            #     for idx, dest_item in enumerate(item['distance']):
+            #         if cur_time - dest_item['time'] <= self._history_interval:
+            #             index = idx
+            #             break
 
-                item['distance'] = item['distance'][index:]
-                item['last_time'] = item['distance'][0]['time']
+            #     item['distance'] = item['distance'][index:]
+            #     item['last_time'] = item['distance'][0]['time']
 
-            item['average'] = sum(dest_item['distance']
-                                  for dest_item in item['distance']) / len(item['distance'])
+            # item['average'] = sum(dest_item['distance']
+            #                       for dest_item in item['distance']) / len(item['distance'])
 
         if self._shift(mc, lighthouse):
             self._calculate(mc)

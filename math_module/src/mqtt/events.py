@@ -39,7 +39,13 @@ def on_message(client, user_data: dict, message: mqtt.MQTTMessage):
   # print(len(user_data['shared'].input_queue))
   lock.release()
 
-  print(f"Lighthouse: {message.topic.split('/')[1]}; Distance to {payload['mc']} is {round(get_distance(payload['rs'], payload['r1'], CALC) * 1000) / 1000}m", end="\r")
+  output = f"Lighthouse: {message.topic.split('/')[1]}; Distance to {payload['mc']} is {round(get_distance(payload['rs'], payload['r1'], CALC) * 1000) / 1000}m"
+
+  if user_data['outMaxLen'] > len(output):
+    user_data['outMaxLen'] = len(output)
+    
+  print(user_data['outMaxLen'] * ' ', end='\r')
+  print(output, end="\r")
 
 
 
