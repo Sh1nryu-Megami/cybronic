@@ -6,8 +6,10 @@ import {
   setEndPosWrapper,
   setCancelPosWrapper,
   setMovePosWrapper,
+  onResizeWrapper,
 } from '/src/handlers/bgMapHandler';
-import PersonPositioning from './PersonPositioning.vue';
+import PersonPositioning from '/src/components/PersonPositioning.vue';
+import {fetch_addr} from '/src/config';
 
 const img_ref = ref()
 const position_data = ref({
@@ -26,6 +28,7 @@ const handlers = ref({
     end: setEndPosWrapper(position_data),
     cancel: setCancelPosWrapper(position_data),
     move: setMovePosWrapper(position_data),
+    resize: onResizeWrapper(position_data),
 });
 
 onMounted(() => {
@@ -33,6 +36,7 @@ onMounted(() => {
   document.addEventListener('touchend', handlers.value.end);
   img_ref.value.addEventListener('touchmove', handlers.value.move);
   document.addEventListener('touchcancel', handlers.value.cancel);
+  document.addEventListener('resize', handlers.value.resize);
 });
 
 onBeforeUnmount(() => {
@@ -40,12 +44,13 @@ onBeforeUnmount(() => {
   document.removeEventListener('touchend', handlers.value.end);
   img_ref.value.removeEventListener('touchmove', handlers.value.move);
   document.removeEventListener('touchcancel', handlers.value.cancel);
+  document.removeEventListener('resize', handlers.value.resize);
 });
 </script>
 
 <template>
   <div :class="$style.bg_map" ref="img_ref">
-    <img id="map" src="../assets/map_tmp.svg" />
+    <img id="map" :src="fetch_addr + 'api/getview'" />
     <PersonPositioning :map="position_data" />
   </div>
 </template>
@@ -66,6 +71,7 @@ onBeforeUnmount(() => {
     position: relative;
     top: 10%;
     left: 0;
+    transform: rotate(0deg);
   }
 }
 </style>

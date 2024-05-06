@@ -22,6 +22,7 @@ def connect_mqtt(config: dict, shared: Shared) -> tuple[mqtt.Client, MQTTErrorCo
   mqtt_client.user_data_set({
     'config': config,
     'shared': shared,
+    'outMaxLen': 0,
   })
 
   mqtt_client.connect(HOST, PORT)

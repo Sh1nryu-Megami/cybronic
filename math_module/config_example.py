@@ -3,7 +3,7 @@ CONFIG = {
   'CALC': {
     'LIGHTHOUSE_TEST_DISTANCE': 1,
     'SIGNAL_TEST_POWER': -49,
-    'LOSE_FACTOR': 2.2,
+    'LOSE_FACTOR': 12,
   },
 
   # Constants for connecting to MQTT broker

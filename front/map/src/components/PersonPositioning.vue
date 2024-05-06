@@ -1,66 +1,87 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import $ from 'jquery'
+import { ref, onMounted, watch } from 'vue';
+import $ from 'jquery';
+import {fetch_addr} from '/src/config';
+import PersonPoint from '/src/components/images/PersonPoint.vue';
 
-const devices = ref([])
-const props = defineProps(['map'])
+const devices = ref([]);
+const devices_comp = ref([]);
+const props = defineProps(['map']);
+const layout = ref({
+  width: 0,
+  height: 0,
+});
 
 onMounted(() => {
+  fetch(fetch_addr + 'api/getlayout')
+  .then((resp) => resp.json())
+  .then((data) => {
+    layout.value.width = data.width
+    layout.value.height = data.height
+  });
+
   setTimeout(function get() {
     new Promise((res) => {
-      fetch('http://192.168.0.12:8000/api/getall')
+      fetch(fetch_addr + 'api/getall')
         .then((resp) => resp.json())
         .then((data) => {
-          devices.value = Object.entries(data[0])
+          if (data[0] == undefined || data[0] == null) {
+            return;
+          }
 
-          for (let i = 0; i < devices.value.length; i++) {
-            devices.value[i][1] = JSON.parse(devices.value[i][1])
+          let arr = Object.entries(data[0]);
+          devices.value = [];
+
+          for (let i = 0; i < arr.length; i++) {
+            devices.value.push({
+              mac: arr[i][0],
+              coords: JSON.parse(arr[i][1]),
+              idx: i,
+            });
           }
           res()
-          setTimeout(get, 500)
+          setTimeout(get, 100)
         })
     })
-  }, 500)
-})
+  }, 100)
+});
 
-watch(() => ({devices: devices.value, updated: props.map.updated}), (shiftPoint) => {
-  props.map.updated = false;
-  for (let [mac, {x, y}] of devices.value) {
-    let x_pos = x;
-    let y_pos = y;
-    let map_pos = $('#map').offset();
-    $('#point' + mac).offset({left: map_pos.left + x_pos, top: map_pos.top + y_pos})
+watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
+  let map = $("#map");
+  const offset = map.offset();
+  const map_width = map.width();
+  const map_height = map.height();
+
+  devices_comp.value = [];
+
+  for (const {idx, mac, coords: {x, y}} of devices.value) {
+    const x_rel = x / layout.value.width * map_width;
+    const y_rel = y / layout.value.height * map_height;
+
+    devices_comp.value.push({
+      idx: idx,
+      mac: mac,
+      coords: {
+        x: offset.left + x_rel,
+        y: offset.top + y_rel,
+      },
+    });
   }
-  
-})
+  // console.log(layout.value)
+});
 
 </script>
 
 <template>
-  
-  <div v-for="[mac, _] of devices" :key="mac" :class="$style.personPoint">
-    <img :id="'point' + mac" src="/src/assets/person.svg" />
-  </div>
+  <PersonPoint
+    v-for="{idx, mac, coords: {x, y}} of devices_comp"
+    :key="mac"
+    :x="x"
+    :y="y"
+    :num="idx"
+  />
 </template>
 
 <style module lang="scss">
 @use '/src/colors';
-
-.personPoint {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  touch-action: none;
-
-  & > img {
-    width: 2%;
-    height: 1%;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-}
 </style>
