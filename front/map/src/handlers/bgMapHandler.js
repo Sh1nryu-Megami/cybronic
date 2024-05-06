@@ -57,8 +57,14 @@ export function setCancelPosWrapper(position_data) {
 export function setMovePosWrapper(position_data) {
   function setMovePos(event) {
     event.preventDefault();
+<<<<<<< HEAD
     // console.log("TMove");
 
+=======
+    console.log("TMove");
+    position_data.value.updated = true;
+    
+>>>>>>> 266968eec0d08627e8eb7599e4d754898e236648
     if (position_data.value.touched == false) {
       // console.log("TMove return");
       return;

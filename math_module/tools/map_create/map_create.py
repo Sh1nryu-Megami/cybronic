@@ -95,8 +95,8 @@ def main():
 
   coordinates = {
     'bounds': {
-      'width': root.attrib['viewBox'].split(' ')[2],
-      'height': root.attrib['viewBox'].split(' ')[3],
+      'width': float(root.attrib['viewBox'].split(' ')[2]),
+      'height': float(root.attrib['viewBox'].split(' ')[3]),
       'scale': 0,
     },
     'halls': {},
