@@ -8,17 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Predis;
 
-class GetAllFromRedis extends AbstractController
+class GetMapView extends AbstractController
 {
-    #[Route('api/getall', methods: ['GET', 'POST'])]
+    #[Route('api/getview', methods: ['GET', 'POST'])]
     public function getAll(): Response
     {
         $redis = new Predis\Client();
-        $keys = $redis->keys('users');
-        $posts = array();
-        foreach ($keys as $key) {
-            $posts[] = $redis->hgetall($key);
-        }
-        return $this->json($posts);
+        $view_path = $redis->get('view');
+        $view_content = file_get_contents($view_path);
+
+        return new Response($view_content, 200, ['Content-Type' => 'image/svg+xml']);
     }
 }
