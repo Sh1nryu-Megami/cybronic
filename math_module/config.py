@@ -8,7 +8,7 @@ CONFIG = {
 
   # Constants for connecting to MQTT broker
   'MQTT': {
-    'HOST': "192.168.1.149",
+    'HOST': "192.168.43.52",
     'PORT': 1883,
     'USERNAME': "test",
     'PASSWORD': "123456",
