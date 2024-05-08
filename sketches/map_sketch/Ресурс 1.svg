@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1737.6 312.2">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffff78;
+      }
+
+      .cls-2 {
+        fill: #99974d;
+      }
+    </style>
+  </defs>
+  <title>Ресурс 1</title>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="Слой_1-2" data-name="Слой 1">
+      <g id="graph">
+        <rect class="cls-1" x="11.33" y="175.4" width="473.33" height="7.9"/>
+        <rect class="cls-2" x="483.39" y="169.03" width="17.42" height="18.44"/>
+        <rect class="cls-1" x="488" y="133.1" width="9.33" height="35.93"/>
+        <rect class="cls-2" x="484.67" y="118.78" width="17.42" height="18.44"/>
+        <rect class="cls-1" x="488.71" y="58.25" width="9.33" height="65.4"/>
+      </g>
+      <rect class="cls-1" width="4.75" height="4.75"/>
+      <rect class="cls-1" x="1730.8" y="305.4" width="6.8" height="6.8"/>
+    </g>
+  </g>
+</svg>
