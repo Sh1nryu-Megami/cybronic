@@ -18,8 +18,8 @@ CONFIG = {
   # Constants for computing person position
   'COMPUTER': {
     # 'LAYOUT_FILE': './tools/map_create/output/test.json',
-    'LAYOUT_FILE': 'E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\test1.json',
-    'VIEW_FILE': 'E:\\git\\cybronic\\sketches\\map_sketch\\test1_view.svg',
+    'LAYOUT_FILE': '.\\tools\\map_create\\output\\build8_ass.json',
+    'VIEW_FILE': '..\\sketches\\map_sketch\\sketch1.svg',
     'HISTORY_INTERVAL': 3,
   },
 

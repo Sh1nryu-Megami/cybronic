@@ -162,9 +162,6 @@ def main():
         'x': center[0],
         'y': center[1],
       }
-    else:
-      print(f"File {args['-f']['data']} contains an unknown class {classifier}")
-      sys.exit(1)
   
   for _, lighthouse in coordinates['lighthouses'].items():
     for _, hall in coordinates['halls'].items():
