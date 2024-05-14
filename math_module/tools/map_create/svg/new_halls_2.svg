@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 392.56 162.63">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffff78;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+        font-size: 12px;
+        font-family: ArialMT, Arial;
+      }
+
+      .cls-3 {
+        fill: #fb7bff;
+      }
+    </style>
+  </defs>
+  <title>new_halls_2</title>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="Слой_1-2" data-name="Слой 1">
+      <rect id="hall_hor" class="cls-1" x="217.46" width="175.1" height="95.2"/>
+      <text id="scale_text" data-name="scale text" class="cls-2" transform="translate(227.46 15.01)">scale=39.66666666666667</text>
+      <rect id="hall2_hor" class="cls-1" y="95.2" width="269.73" height="67.43"/>
+      <rect id="white" class="cls-3" x="14.79" y="96.2" width="10" height="2"/>
+      <rect id="black" class="cls-3" x="258.12" y="95.81" width="10" height="2"/>
+      <rect id="green" class="cls-3" x="253.12" y="5.94" width="10" height="2"/>
+      <rect id="blue" class="cls-3" x="355.44" y="18.17" width="10" height="2"/>
+    </g>
+  </g>
+</svg>

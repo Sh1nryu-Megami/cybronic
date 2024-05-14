@@ -2,6 +2,7 @@
 import {colors} from "/src/config/personPointColors";
 
 const props = defineProps(['num', 'x', 'y']);
+
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const props = defineProps(['num', 'x', 'y']);
   viewBox="0 0 32 32"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  :class="$style.cont"
+  :class="[$style.cont, 'personPoint']"
   :style="{left: props.x, top: props.y}"
 >
   <circle cx="16" cy="16" r="16" fill="#FFF9EA"/>
