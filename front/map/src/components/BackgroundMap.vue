@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onBeforeUnmount, watch } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 import { ref } from 'vue';
 import {
   setStartPosWrapper,

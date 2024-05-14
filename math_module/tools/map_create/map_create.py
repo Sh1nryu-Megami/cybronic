@@ -68,6 +68,7 @@ def svg_find(root, tag, all=False):
 def main():
     args = parseArgv()
 
+
     if args['-h']['exists']:
         with open('help.txt', 'r') as f:
             help_text = f.read()
@@ -204,20 +205,20 @@ def main():
                 'x': center[0],
                 'y': center[1],
             }
-        # else:
-        #     print(
-        #         f"File {args['-f']['data']} contains an unknown class {classifier}")
-        #     sys.exit(1)
+        else:
+            print(
+                f"File {args['-f']['data']} contains an unknown class {classifier}")
+            sys.exit(1)
 
-    # for _, lighthouse in coordinates['lighthouses'].items():
-    #     for _, hall in coordinates['halls'].items():
-    #         if hall['x'] <= lighthouse['x'] <= hall['x'] + hall['width'] and hall['y'] <= lighthouse['y'] <= hall['y'] + hall['height']:
-    #             lighthouse['hall'] = hall['id']
+    for _, lighthouse in coordinates['lighthouses'].items():
+        for _, hall in coordinates['halls'].items():
+            if hall['x'] <= lighthouse['x'] <= hall['x'] + hall['width'] and hall['y'] <= lighthouse['y'] <= hall['y'] + hall['height']:
+                lighthouse['hall'] = hall['id']
 
-    #     if lighthouse.get('hall') is None:
-    #         print(
-    #             f"File {args['-f']['data']} contains a lighthouse that does not belong to any hall.")
-    #         sys.exit(1)
+        if lighthouse.get('hall') is None:
+            print(
+                f"File {args['-f']['data']} contains a lighthouse that does not belong to any hall.")
+            sys.exit(1)
 
     if args['-o']['exists']:
         basename = os.path.basename(args['-o']['data'])
