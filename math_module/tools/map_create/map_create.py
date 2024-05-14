@@ -140,8 +140,10 @@ def main():
     if classifier == classes['hall']:
       if id[-4:] == 'vert':
         baseline = x + width / 2
+        margin = height * 0.02
       elif id[-3:] == 'hor':
         baseline = y + height / 2
+        margin = width * 0.02
       else:
         print(f"File {args['-f']['data']} contains wrong id {id} notation for hall.")
         sys.exit(1)
@@ -153,6 +155,7 @@ def main():
         'width': width,
         'height': height,
         'baseline': baseline,
+        'margin': margin,
       }
     elif classifier == classes['lighthouse']:
       center = (x + width / 2, y + height / 2)

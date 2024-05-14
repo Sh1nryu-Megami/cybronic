@@ -41,10 +41,12 @@ def on_message(client, user_data: dict, message: mqtt.MQTTMessage):
 
   output = f"Lighthouse: {message.topic.split('/')[1]}; Distance to {payload['mc']} is {round(get_distance(payload['rs'], payload['r1'], CALC) * 1000) / 1000}m"
 
-  if user_data['outMaxLen'] > len(output):
+  addon = len(output) - user_data['outMaxLen']
+  if addon > 0:
     user_data['outMaxLen'] = len(output)
-    
-  print(user_data['outMaxLen'] * ' ', end='\r')
+  else:
+    output += -addon * ' '
+  
   print(output, end="\r")
 
 

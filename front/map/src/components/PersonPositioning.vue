@@ -20,37 +20,43 @@ onMounted(() => {
     layout.value.height = data.height
   });
 
-  setTimeout(function get() {
-    new Promise((res) => {
-      fetch(fetch_addr + 'api/getall')
-        .then((resp) => resp.json())
-        .then((data) => {
-          if (data[0] == undefined || data[0] == null) {
-            return;
-          }
+  setInterval( async function get() {
+    let data = await fetch(fetch_addr + 'api/getall');
+    data = await data.json();
 
-          let arr = Object.entries(data[0]);
-          devices.value = [];
+    if (data[0] == undefined || data[0] == null) {
+      return;
+    }
 
-          for (let i = 0; i < arr.length; i++) {
-            devices.value.push({
-              mac: arr[i][0],
-              coords: JSON.parse(arr[i][1]),
-              idx: i,
-            });
-          }
-          res()
-          setTimeout(get, 100)
-        })
-    })
+    let arr = Object.entries(data[0]);
+    devices.value = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      devices.value.push({
+        mac: arr[i][0],
+        coords: JSON.parse(arr[i][1]),
+        idx: i,
+      });
+    }
   }, 100)
 });
 
 watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
   let map = $("#map");
+  let personPoint = $(".personPoint");
   const offset = map.offset();
   const map_width = map.width();
   const map_height = map.height();
+  let pointOffsetX = 0;
+  let pointOffsetY = 0;
+  
+  if (personPoint.length != 0) {
+    const width = personPoint.width();
+    const height = personPoint.height();
+
+    pointOffsetX = width / 2;
+    pointOffsetY = height / 2;
+  }
 
   devices_comp.value = [];
 
@@ -62,12 +68,11 @@ watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
       idx: idx,
       mac: mac,
       coords: {
-        x: offset.left + x_rel,
-        y: offset.top + y_rel,
+        x: offset.left + x_rel - pointOffsetX,
+        y: offset.top + y_rel - pointOffsetY,
       },
     });
   }
-  // console.log(layout.value)
 });
 
 </script>
