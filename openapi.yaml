@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Test API Documentation
+  description: Documentation for backend API endpoints.
+  version: 0.0.1
+servers:
+  - url: http://localhost:8000/
+    description: Dev server
+
+paths:
+  /api/getall:
+    get:
+      summary: Retrieve MAC addresses, coordinates, and locations of all users on the map.
+      description: |
+        This endpoint retrieves the MAC addresses, x and y coordinates, and locations of all users on the map from Redis.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    x:
+                      type: number
+                      description: X coordinate
+                    y:
+                      type: number
+                      description: Y coordinate
+
+  /api/getallrooms:
+    get:
+      summary: Retrieve all rooms on the map with their coordinates.
+      description: |
+        This endpoint retrieves all rooms on the map along with their x and y coordinates from Redis.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    x:
+                      type: number
+                      description: X coordinate
+                    y:
+                      type: number
+                      description: Y coordinate
+
+  /api/getlayout:
+    get:
+      summary: Retrieve the width and height of the map.
+      description: |
+        This endpoint retrieves the width and height of the map from Redis.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  width:
+                    type: number
+                    description: Width of the map
+                  height:
+                    type: number
+                    description: Height of the map
+
+  /api/getpath:
+    get:
+      summary: Generate the shortest path between a user's MAC address and a destination.
+      description: |
+        This endpoint calculates the shortest path between a user's MAC address and a destination.
+      parameters:
+        - in: query
+          name: mac_address
+          schema:
+            type: string
+          required: true
+          description: MAC address of the user
+        - in: query
+          name: destination
+          schema:
+            type: string
+          required: true
+          description: Destination point
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                description: List of vertices on the path
+
+  /api/getview:
+    get:
+      summary: Get a link to a beautiful SVG with walls.
+      description: |
+        This endpoint provides a link to a visually appealing SVG with walls on the front end.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: uri
+                description: Link to the SVG

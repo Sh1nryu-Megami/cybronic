@@ -13,19 +13,23 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@ionic/vue": "^8.0.0-rc.2",
+    "@ionic/vue-router": "^8.0.0-rc.2",
     "jquery": "^3.7.1",
     "pinia": "^2.1.7",
     "sass": "^1.76.0",
-    "vue": "^3.4.21"
+    "vue": "^3.4.27"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.3.3",
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.11.28",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/runtime-core": "^3.4.27",
     "@vue/tsconfig": "^0.5.1",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",

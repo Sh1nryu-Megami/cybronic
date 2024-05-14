@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Test Vue map</string>
+    <string name="title_activity_main">Test Vue map</string>
+    <string name="package_name">com.cybronic.app</string>
+    <string name="custom_url_scheme">com.cybronic.app</string>
+</resources>
