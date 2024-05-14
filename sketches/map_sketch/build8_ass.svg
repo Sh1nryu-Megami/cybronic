@@ -36,7 +36,7 @@
       <rect id="g_hor" class="cls-2" x="6" y="159.7" width="462.1" height="37.8"/>
       <rect id="anchor_right" class="cls-1" x="1733.1" y="305.4" width="6.8" height="6.8"/>
       <rect id="anchor_left" class="cls-1" width="5.85" height="5.85"/>
-      <text class="cls-4" transform="translate(1537.75 175.27)">scale=133.3333333</text>
+      <text class="cls-4" transform="translate(1537.75 175.27)"><tspan x="0" y="0">scale=133.3333333</tspan></text>
       <rect id="white" class="cls-3" x="523.15" y="113.96" width="10.21" height="1.94"/>
       <rect id="black" class="cls-3" x="757.19" y="114.34" width="10.21" height="1.6"/>
     </g>

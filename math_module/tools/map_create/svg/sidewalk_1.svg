@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 673 107.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffff78;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: #000;
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 12px;
+      }
+
+      .cls-2 {
+        fill: #fb7bff;
+      }
+    </style>
+  </defs>
+  <g id="_Слой_1-2" data-name="Слой 1">
+    <g id="a_hor">
+      <rect id="a_hor" class="cls-1" width="673" height="107.68"/>
+    </g>
+    <rect id="white" class="cls-2" x="23" y="11.34" width="37" height="12"/>
+    <rect id="black" class="cls-2" x="618" y="5.34" width="37" height="12"/>
+    <text id="a_hor" class="cls-3" transform="translate(164.19 19.91)">scale=44.86666666666667</text>
+  </g>
+</svg>

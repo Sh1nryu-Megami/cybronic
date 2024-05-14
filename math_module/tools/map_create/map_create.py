@@ -84,7 +84,7 @@ def main():
     except FileNotFoundError:
         print(f"File {args['-f']['data']} not found")
         sys.exit(1)
-        
+
     root = tree.getroot()
 
     if svg_find(root, 'style') == None:
@@ -182,8 +182,10 @@ def main():
         if classifier == classes['hall']:
             if id[-4:] == 'vert':
                 baseline = x + width / 2
+                margin = height * 0.01
             elif id[-3:] == 'hor':
                 baseline = y + height / 2
+                margin = width * 0.01
             else:
                 print(
                     f"File {args['-f']['data']} contains wrong id {id} notation for hall.")
@@ -196,6 +198,7 @@ def main():
                 'width': width,
                 'height': height,
                 'baseline': baseline,
+                'margin': margin,
             }
         elif classifier == classes['lighthouse']:
             center = (x + width / 2, y + height / 2)
@@ -205,10 +208,10 @@ def main():
                 'x': center[0],
                 'y': center[1],
             }
-        else:
-            print(
-                f"File {args['-f']['data']} contains an unknown class {classifier}")
-            sys.exit(1)
+        # else:
+            # print(
+            #     f"File {args['-f']['data']} contains an unknown class {classifier}")
+            # sys.exit(1)
 
     for _, lighthouse in coordinates['lighthouses'].items():
         for _, hall in coordinates['halls'].items():

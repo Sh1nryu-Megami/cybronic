@@ -149,21 +149,23 @@ class Store:
         baseline = hall_obj['baseline']
 
         if hall.endswith('hor'):
-            if margin + x_hall <= x_pre <= x_hall + width - 3 * margin:
-                position['x'] = x_pre
-            elif x_pre < margin + x_hall:
-                position['x'] = margin + x_hall
-            else:
-                position['x'] = x_hall + width - 3 * margin
+            # if margin + x_hall <= x_pre <= x_hall + width - 3 * margin:
+            #     position['x'] = x_pre
+            # elif x_pre < margin + x_hall:
+            #     position['x'] = margin + x_hall
+            # else:
+            #     position['x'] = x_hall + width - 3 * margin
+            position['x'] = x_pre
             
             position['y'] = baseline
         elif hall.endswith('_vert'):
-            if margin + y_hall <= y_pre <= y_hall + height - 3 * margin:
-                position['y'] = y_pre
-            elif y_pre < margin + y_hall:
-                position['y'] = margin + y_hall
-            else:
-                position['y'] = y_hall + height - 3 * margin
+            # if margin + y_hall <= y_pre <= y_hall + height - 3 * margin:
+            #     position['y'] = y_pre
+            # elif y_pre < margin + y_hall:
+            #     position['y'] = margin + y_hall
+            # else:
+            #     position['y'] = y_hall + height - 3 * margin
+            position['y'] = y_pre
             
             position['x'] = baseline
 

@@ -6,7 +6,7 @@ const devices = ref([]);
 onMounted(() => {
   setTimeout(function get() {
     new Promise((res) => {
-      fetch("http://192.168.1.149/api/getall")
+      fetch("http://192.168.43.52/api/getall")
       .then((resp) => resp.json())
       .then((data) => {
         devices.value = Object.entries(data[0]).slice(1);
