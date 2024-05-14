@@ -3,7 +3,7 @@ CONFIG = {
   'CALC': {
     'LIGHTHOUSE_TEST_DISTANCE': 1,
     'SIGNAL_TEST_POWER': -49,
-    'LOSE_FACTOR': 12,
+    'LOSE_FACTOR': 2.8,
   },
 
   # Constants for connecting to MQTT broker
@@ -18,9 +18,11 @@ CONFIG = {
   # Constants for computing person position
   'COMPUTER': {
     # 'LAYOUT_FILE': './tools/map_create/output/test.json',
-    'LAYOUT_FILE': 'E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\test1.json',
-    'VIEW_FILE': 'E:\\git\\cybronic\\sketches\\map_sketch\\test1_view.svg',
+    'LAYOUT_FILE': 'E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\new_halls.json',
+    'VIEW_FILE': 'E:\\git\\cybronic\\sketches\\map_sketch\\halls_view.svg',
     'HISTORY_INTERVAL': 3,
+    'UPPER_BOUND': 12,
+    'LOWER_BOUND': 0.3,
   },
 
   # Constants for redis connection

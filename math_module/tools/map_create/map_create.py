@@ -127,7 +127,8 @@ def main():
     print(f"File {args['-f']['data']} does not contain a text tag with scale in it.")
     sys.exit(1)
 
-  coordinates['bounds']['scale'] = float(text_scale.text.split('=')[1])
+  text_scale = ''.join([i for i in text_scale.itertext()])
+  coordinates['bounds']['scale'] = float(text_scale.split('=')[1])
 
   for rect in svg_find(root, 'rect', True):
     x = float(rect.attrib.get('x', 0))
