@@ -1,4 +1,6 @@
 import time
+import numpy as np
+from triangulation import triangulation
 
 
 class Store:
@@ -18,7 +20,7 @@ class Store:
             return False
         else:
             position = self._positions[mc]
-            if len(position['points']) != 2:
+            if len(position['points']) < 3:
                 if position['points'][0] != lighthouse:
                     position['points'].append(lighthouse)
                 return False
@@ -26,6 +28,7 @@ class Store:
             cur_dis = self._history[(mc, lighthouse)]['average']
             point1 = self._history[(mc, position['points'][0])]['average']
             point2 = self._history[(mc, position['points'][1])]['average']
+            point3 = self._history[(mc, position['points'][2])]['average']
 
             if cur_dis < point1:
                 if position['points'][1] != lighthouse:
@@ -35,6 +38,10 @@ class Store:
                 if position['points'][0] != lighthouse:
                     position['points'][1] = lighthouse
                     point2 = cur_dis
+            elif cur_dis < point3:
+                if position['points'][0] != lighthouse:
+                    position['points'][2] = lighthouse
+                    point3 = cur_dis
             else:
                 return False
 
@@ -48,59 +55,63 @@ class Store:
 
         d1_obj = self._layout['lighthouses'][position['points'][0]]
         d2_obj = self._layout['lighthouses'][position['points'][1]]
+        d3_obj = self._layout['lighthouses'][position['points'][2]]
         d1 = self._history[(mc, position['points'][0])]['average']
         d2 = self._history[(mc, position['points'][1])]['average']
+        d3 = self._history[(mc, position['points'][2])]['average']
         x1 = d1_obj['x']
         y1 = d1_obj['y']
         x2 = d2_obj['x']
         y2 = d2_obj['y']
+        x3 = d3_obj['x']
+        y3 = d3_obj['y']
+        x_pre, y_pre = triangulation(x1, y1, x2, y2, x3, y3, d1, d2, d3)
+        # if (x1 - x2) ** 2 + (y1 - y2) ** 2 >= (d1 + d2) ** 2:
+        #     # вырожденный треугольник
+        #     lh_dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        #     d1_x = d1 * (x2 - x1) / lh_dist
+        #     d1_y = d1 * (y2 - y1) / lh_dist
+        #     d2_x = d2 * (x1 - x2) / lh_dist
+        #     d2_y = d2 * (y1 - y2) / lh_dist
 
-        if (x1 - x2) ** 2 + (y1 - y2) ** 2 >= (d1 + d2) ** 2:
-            # вырожденный треугольник
-            lh_dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
-            d1_x = d1 * (x2 - x1) / lh_dist
-            d1_y = d1 * (y2 - y1) / lh_dist
-            d2_x = d2 * (x1 - x2) / lh_dist
-            d2_y = d2 * (y1 - y2) / lh_dist
+        #     d1_bound_x = x1 + d1_x
+        #     d1_bound_y = y1 + d1_y
+        #     d2_bound_x = x2 + d2_x
+        #     d2_bound_y = y2 + d2_y
 
-            d1_bound_x = x1 + d1_x
-            d1_bound_y = y1 + d1_y
-            d2_bound_x = x2 + d2_x
-            d2_bound_y = y2 + d2_y
+        #     x_pre = (d1_bound_x + d2_bound_x) / 2
+        #     y_pre = (d1_bound_y + d2_bound_y) / 2
+        # else:
+        #     lh_dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2)
+        #     a = (d1**2 - d2**2 + lh_dist) / (2 * (lh_dist**0.5))
+        #     x_pre = x1 + (a/(lh_dist**0.5)) * (x2 - x1)
+        #     y_pre = y1 + (a/(lh_dist**0.5)) * (y2 - y1)
+        #     # E = (d1 ** 2 - d2 ** 2 + x2 ** 2 + y2 ** 2 - x1 ** 2 - y1 ** 2) / (2 * (y2 - y1))
+        #     # C = (x2 - x1) / (y2 - y1)
+        #     # a = 1 + C ** 2
+        #     # b = -2 * (x1 + E * C - C * y1)
+        #     # c = x1 ** 2 + E ** 2 - 2 * E * y1 + y1 ** 2 - d1 ** 2
 
-            x_pre = (d1_bound_x + d2_bound_x) / 2
-            y_pre = (d1_bound_y + d2_bound_y) / 2
-        else:
-            lh_dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2)
-            a = (d1**2 - d2**2 + lh_dist) / (2 * (lh_dist**0.5))
-            x_pre = x1 + (a/(lh_dist**0.5)) * (x2 - x1)
-            y_pre = y1 + (a/(lh_dist**0.5)) * (y2 - y1)
-            # E = (d1 ** 2 - d2 ** 2 + x2 ** 2 + y2 ** 2 - x1 ** 2 - y1 ** 2) / (2 * (y2 - y1))
-            # C = (x2 - x1) / (y2 - y1)
-            # a = 1 + C ** 2
-            # b = -2 * (x1 + E * C - C * y1)
-            # c = x1 ** 2 + E ** 2 - 2 * E * y1 + y1 ** 2 - d1 ** 2
+        #     # D = b ** 2 - 4 * a * c
+        #     # x_pre_1 = (-b + D ** 0.5) / (2 * a)
+        #     # x_pre_2 = (-b - D ** 0.5) / (2 * a)
+        #     # y_pre_1 = E - C * x_pre_1
+        #     # y_pre_2 = E - C * x_pre_2
 
-            # D = b ** 2 - 4 * a * c
-            # x_pre_1 = (-b + D ** 0.5) / (2 * a)
-            # x_pre_2 = (-b - D ** 0.5) / (2 * a)
-            # y_pre_1 = E - C * x_pre_1
-            # y_pre_2 = E - C * x_pre_2
+        #     # m_x = x_pre_1
+        #     # m_y = y_pre_1
+        #     # p_x = x1
+        #     # p_y = y1
+        #     # b_x = x_pre_2 - x_pre_1
+        #     # b_y = y_pre_2 - y_pre_1
+        #     # a_x = x2 - x1
+        #     # a_y = y2 - y1
 
-            # m_x = x_pre_1
-            # m_y = y_pre_1
-            # p_x = x1
-            # p_y = y1
-            # b_x = x_pre_2 - x_pre_1
-            # b_y = y_pre_2 - y_pre_1
-            # a_x = x2 - x1
-            # a_y = y2 - y1
+        #     # delta = - b_x * a_y + a_x * b_y
+        #     # t_1 = (-(p_x - m_x) * a_y + (p_y - m_y) * a_x) / delta
 
-            # delta = - b_x * a_y + a_x * b_y
-            # t_1 = (-(p_x - m_x) * a_y + (p_y - m_y) * a_x) / delta
-
-            # x_pre = m_x + t_1 * b_x
-            # y_pre = m_y + t_1 * b_y
+        #     # x_pre = m_x + t_1 * b_x
+        #     # y_pre = m_y + t_1 * b_y
 
         if d1_obj['hall'] == d2_obj['hall']:
             hall = d1_obj['hall']
@@ -151,30 +162,31 @@ class Store:
             }
         else:
             self._history[(mc, lighthouse)]['average'] = distance
-            # item = self._history[(mc, lighthouse)]
-            # cur_time = time.time()
-            # item['distance'].append({
-            #     'distance': distance,
-            #     'time': cur_time,
-            # })
+            item = self._history[(mc, lighthouse)]
+            cur_time = time.time()
+            item['distance'].append({
+                'distance': distance,
+                'time': cur_time,
+            })
 
-            # if cur_time - item['last_time'] > self._history_interval:
-            #     for idx, dest_item in enumerate(item['distance']):
-            #         if cur_time - dest_item['time'] <= self._history_interval:
-            #             index = idx
-            #             break
+            if cur_time - item['last_time'] > self._history_interval:
+                for idx, dest_item in enumerate(item['distance']):
+                    if cur_time - dest_item['time'] <= self._history_interval:
+                        index = idx
+                        break
 
-            #     item['distance'] = item['distance'][index:]
-            #     item['last_time'] = item['distance'][0]['time']
+                item['distance'] = item['distance'][index:]
+                item['last_time'] = item['distance'][0]['time']
 
-            # item['average'] = sum(dest_item['distance']
-            #                       for dest_item in item['distance']) / len(item['distance'])
+            item['average'] = sum(dest_item['distance']
+                                  for dest_item in item['distance']) / len(item['distance'])
 
         if self._shift(mc, lighthouse):
             self._calculate(mc)
             return {
                 'x': self._positions[mc]['x'],
                 'y': self._positions[mc]['y'],
+
             }
         else:
             return {

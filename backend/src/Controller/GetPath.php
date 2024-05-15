@@ -11,8 +11,8 @@ use Exception;
 
 class GetPath extends AbstractController
 {
-    #[Route('api/getpath', methods: ['GET', 'POST'])]
-    public function getPath(): Response
+    #[Route('api/getpath/{mac}/{point}', methods: ['GET', 'POST'])]
+    public function getPath($mac, $point): Response
     {
         try {
             // путь до jsona с картой и графом
@@ -25,8 +25,9 @@ class GetPath extends AbstractController
         $n = count($content['graph']);
 
         // тут должен быть mac
-        addToNearest($graph, '299');
-
-        return $this->json(BFS($n + 1, $graph, 'room7', '299'));  //вместо room7 - пункт назначения
+        if (array_key_exists($point, $graph) && addToNearest($graph, $mac)) {
+            return $this->json(BFS($n + 1, $graph, $point, $mac));
+        }
+        return $this->json(['error']);
     }
 }
