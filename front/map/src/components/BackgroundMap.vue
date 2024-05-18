@@ -9,7 +9,7 @@ import {
   onResizeWrapper,
 } from '/src/handlers/bgMapHandler';
 import PersonPositioning from '/src/components/PersonPositioning.vue';
-import {fetch_addr} from '/src/config';
+import {fetch_addr} from '/src/config.js';
 
 const img_ref = ref()
 const position_data = ref({

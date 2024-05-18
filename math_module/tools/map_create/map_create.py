@@ -91,7 +91,7 @@ def main():
     sys.exit(1)
   else:
     style = cssutils.parseString(
-        svg_find(root, 'style').text, validate=False)
+      svg_find(root, 'style').text, validate=False)
 
   if len(style.cssRules) == 0:
     print(f"File {args['-f']['data']} does not contain any rules")
@@ -110,7 +110,7 @@ def main():
 
   if classes['hall'] is None or classes['lighthouse'] is None:
     print(
-        f"File {args['-f']['data']} does not contain a hall or lighthouse colors.")
+      f"File {args['-f']['data']} does not contain a hall or lighthouse colors.")
     sys.exit(1)
 
   coordinates = {
@@ -127,9 +127,9 @@ def main():
   text_scale = svg_find(root, 'text')
 
   if text_scale is None:
-      print(
-          f"File {args['-f']['data']} does not contain a text tag with scale in it.")
-      sys.exit(1)
+    print(
+      f"File {args['-f']['data']} does not contain a text tag with scale in it.")
+    sys.exit(1)
 
   coordinates['bounds']['scale'] = float(text_scale.text.split('=')[1])
 
@@ -181,8 +181,10 @@ def main():
     if classifier == classes['hall']:
       if id[-4:] == 'vert':
         baseline = x + width / 2
+        margin = height * 0.01
       elif id[-3:] == 'hor':
         baseline = y + height / 2
+        margin = width * 0.01
       else:
         print(
             f"File {args['-f']['data']} contains wrong id {id} notation for hall.")
@@ -195,6 +197,7 @@ def main():
         'width': width,
         'height': height,
         'baseline': baseline,
+        'margin': margin,
       }
     elif classifier == classes['lighthouse']:
       center = (x + width / 2, y + height / 2)
@@ -204,10 +207,10 @@ def main():
         'x': center[0],
         'y': center[1],
       }
-    else:
-      print(
-          f"File {args['-f']['data']} contains an unknown class {classifier}")
-      sys.exit(1)
+    # else:
+        # print(
+        #     f"File {args['-f']['data']} contains an unknown class {classifier}")
+        # sys.exit(1)
 
   for _, lighthouse in coordinates['lighthouses'].items():
     for _, hall in coordinates['halls'].items():
