@@ -12,8 +12,9 @@
     "TOPIC": "maircom_tag_scanner/#"
   },
   "COMPUTER": {
-    "LAYOUT_FILE": "E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\new_halls.json",
+    "LAYOUT_FILE": "E:\\git\\cybronic\\math_module\\tools\\map_create\\output\\test.json",
     "VIEW_FILE": "E:\\git\\cybronic\\sketches\\map_sketch\\halls_view.svg",
+    "ACTUALLY_LAYOUT_FILE": "./data/layout.json",
     "HISTORY_INTERVAL": 3,
     "UPPER_BOUND": 12,
     "LOWER_BOUND": 0.3

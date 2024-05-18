@@ -5,3 +5,30 @@ services:
     restart: always
     ports:
       - "6379:6379"
+  mqtt:
+   image: eclipse-mosquitto
+   restart: always
+   volumes:
+    - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    - ./mosquitto_psw.txt:/mosquitto/data/psw.txt
+   ports:
+    - "1883:1883"
+  math_module:
+   build: ./math_module
+   restart: always
+   command: python -u math_module.py
+   env_file: ./math_module/release.env
+   depends_on:
+    - db
+    - mqtt
+  apache:
+   build: ./backend
+   restart: always
+   ports:
+    - "80:80"
+   env_file: ./backend/.env
+   depends_on:
+    - db
+    - mqtt
+    - math_module
+   

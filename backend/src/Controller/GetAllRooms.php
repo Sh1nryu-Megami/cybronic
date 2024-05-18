@@ -15,7 +15,7 @@ class GetAllRooms extends AbstractController
     {
         try {
             // путь до jsona с картой и графом
-            $f_json = file_get_contents('D:\Reposits\cybronic\math_module\tools\map_create\output\graph5.json');
+            $f_json = file_get_contents('../data/layout.json');
             $content = json_decode($f_json, true);
             $graph = $content['graph'];
         } catch (Exception $e) {

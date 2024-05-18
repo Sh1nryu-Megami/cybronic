@@ -1,7 +1,7 @@
 from paho.mqtt.enums import MQTTErrorCode
 import sys
 import asyncio
-import signal
+import os
 import json
 from src.compute import Shared
 from src.compute import computer
@@ -31,6 +31,11 @@ def main():
   # Creating asyncio event loop
   loop = asyncio.new_event_loop()
   
+  if os.environ.get('DBHOST') != None:
+    CONFIG['REDIS']['HOST'] = os.environ.get('DBHOST')
+  if os.environ.get('MQTTHOST') != None:
+    CONFIG['MQTT']['HOST'] = os.environ.get('MQTTHOST')
+  
   MQTT_HOST = CONFIG['MQTT']['HOST']
   MQTT_PORT = CONFIG['MQTT']['PORT']
 
@@ -44,15 +49,6 @@ def main():
   else:
     print(f"Failed to connect to MQTT broker at {MQTT_HOST}:{MQTT_PORT} with error code {mqtt_status}")
     sys.exit(1)
-  
-  # Registering signal handlers for interrupting the program execution
-  stop_signals = (signal.SIGINT, signal.SIGTERM, signal.SIGABRT)
-
-  try:
-    for sig in stop_signals:
-      loop.add_signal_handler(sig, raise_system_exit)
-  except NotImplementedError:
-    print(f"Unimplemented signal has tried to be handled")
   
   try:
     loop.run_until_complete(main_loop(CONFIG, shared))
