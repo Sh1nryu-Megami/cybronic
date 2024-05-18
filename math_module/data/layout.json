@@ -1,0 +1,31 @@
+{
+  "bounds": {
+    "width": "175.1",
+    "height": "134.9",
+    "scale": 2.6285714285714286
+  },
+  "halls": {
+    "hall_hor": {
+      "id": "hall_hor",
+      "x": 0.0,
+      "y": 39.7,
+      "width": 175.1,
+      "height": 95.2,
+      "baseline": 87.30000000000001
+    }
+  },
+  "lighthouses": {
+    "white": {
+      "id": "white",
+      "x": 151.0,
+      "y": 43.5,
+      "hall": "hall_hor"
+    },
+    "black": {
+      "id": "black",
+      "x": 5.0,
+      "y": 40.7,
+      "hall": "hall_hor"
+    }
+  }
+}

@@ -5,7 +5,7 @@ from .store import Store
 
 
 async def computer(config: dict, shared: Shared) -> None:
-  with open(config['COMPUTER']['LAYOUT_FILE']) as f:
+  with open(config['COMPUTER']['ACTUALLY_LAYOUT_FILE']) as f:
     layout = json.loads(f.read())
   
   store = Store(config['COMPUTER'], layout)

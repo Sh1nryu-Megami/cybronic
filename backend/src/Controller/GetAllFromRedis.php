@@ -13,7 +13,13 @@ class GetAllFromRedis extends AbstractController
     #[Route('api/getall', methods: ['GET', 'POST'])]
     public function getAll(): Response
     {
-        $redis = new Predis\Client();
+        $host = 'localhost';
+
+        if (getenv('DBHOST') !== false) {
+            $host = getenv('DBHOST');
+        }
+
+        $redis = new Predis\Client(['host' => $host]);
         $keys = $redis->keys('users');
         $posts = array();
         foreach ($keys as $key) {
