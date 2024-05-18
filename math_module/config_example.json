@@ -5,7 +5,7 @@
     "LOSE_FACTOR": 2.8
   },
   "MQTT": {
-    "HOST": "192.168.1.149",
+    "HOST": "localhost",
     "PORT": 1883,
     "USERNAME": "test",
     "PASSWORD": "123456",
@@ -23,5 +23,8 @@
     "PORT": 6379,
     "DB": 0,
     "PASSWORD": null
+  },
+  "HOST": {
+    "IP": "192.168.1.149"
   }
 }
