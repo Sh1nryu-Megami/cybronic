@@ -2,28 +2,15 @@ from paho.mqtt.enums import MQTTErrorCode
 import sys
 import asyncio
 import signal
+import json
 from src.compute import Shared
 from src.compute import computer
 from src.mqtt import connect_mqtt
 from src.db import connect_redis
-from config import CONFIG
 
 
 def raise_system_exit():
   raise SystemExit
-
-def parseArgv() -> dict[dict]:
-  arguments = {
-    '-h': {
-      'exists': False,
-    }
-  }
-  
-  for arg in sys.argv[1:]:
-    if arg in arguments:
-      arguments[arg]['exists'] = True
-
-  return arguments
 
 
 async def main_loop(CONFIG: dict, shared: Shared) -> None:
@@ -34,15 +21,13 @@ async def main_loop(CONFIG: dict, shared: Shared) -> None:
 
 
 def main():
-  args = parseArgv()
-
-  if args['-h']['exists']:
-    with open('help.txt', 'r') as f:
-      help_text = f.read()
-    
-    print(help_text)
-    sys.exit(0)
-
+  try:
+    with open("./config.json", 'r') as f:
+      CONFIG = json.loads(f.read())
+  except FileNotFoundError:
+    print("ERROR: config.json file not found")
+    sys.exit(1)
+  
   # Creating asyncio event loop
   loop = asyncio.new_event_loop()
   
