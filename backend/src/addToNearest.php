@@ -4,26 +4,20 @@
  * и добавляет к ней фиктивную вершину-пользователя
  * @param string $mac Mac-адрес пользователя
  * @param mixed &$graph Граф карты
- * @return void
+ * @return bool
  */
 function addToNearest(&$graph, string $mac)
 {
 
     $redis = new Predis\Client();
-    $start_point = json_decode($redis->hgetall('users')[$mac], true);
-
+    try {
+        $start_point = json_decode($redis->hgetall('users')[$mac], true);
+    } catch (Exception $e) {
+        return False;
+    }
     $start_x = $start_point['x'];
     $start_y = $start_point['y'];
-    // закоментил потому что не вижу смысла в поиске двух ближайших, если что - спрашивай
-    // $dist_to_vertexes = array_fill_keys(array_keys($graph), 10000000);  // тут должно быть число равное размеру карты
-    // foreach ($graph as $id => $vert) {
-    //     $v_x = $vert['x'];
-    //     $v_y = $vert['y'];
-    //     $curr_dist = sqrt(($v_x - $start_x) ** 2 + ($v_y - $start_y) ** 2);
-    //     $dist_to_vertexes[$id] = $curr_dist;
-    // }
-    // asort($dist_to_vertexes);
-    $nearest_dist = 1000000000;  // тут должно быть число равное размеру карты
+    $nearest_dist = 2000;
     $neares_id = -1;
     foreach ($graph as $id => $vert) {
         $v_x = $vert['x'];
@@ -38,4 +32,5 @@ function addToNearest(&$graph, string $mac)
     $graph[$mac]['y'] = $start_y;
     $graph[$mac]['adjacent'][] = $neares_id;
     $graph[$neares_id]['adjacent'][] = $mac;
+    return true;
 }
