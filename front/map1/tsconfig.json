@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-vue-plugin",
+        "enabled": false
+      }
+    ]
+  }
+}

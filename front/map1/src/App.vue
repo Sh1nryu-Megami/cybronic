@@ -1,7 +1,7 @@
 <script setup>
 import BottomMenu from './components/BottomMenu.vue'
 import BackgroundMap from './components/BackgroundMap.vue'
-import Getmac from './components/GetMac.vue'
+import Getmac from './components/Getmac.vue'
 import { onMounted, ref } from 'vue';
 
 const is_init = ref(false);
@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Getmac v-if="!is_init" />
+
   <BackgroundMap />
   <BottomMenu />
   <!--<div id="log" style="color: white;">0</div> -->
