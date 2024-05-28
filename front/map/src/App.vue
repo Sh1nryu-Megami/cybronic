@@ -15,9 +15,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Getmac v-if="!is_init" />
   <BackgroundMap />
   <BottomMenu />
+  <Getmac v-if="!is_init" />
   <!--<div id="log" style="color: white;">0</div> -->
 </template>
 
