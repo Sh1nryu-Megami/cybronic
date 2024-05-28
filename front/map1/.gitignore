@@ -30,4 +30,3 @@ coverage
 *.tsbuildinfo
 
 src/config.js
-
