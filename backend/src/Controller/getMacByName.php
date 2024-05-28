@@ -10,21 +10,20 @@ use Exception;
 
 class getMacByName extends AbstractController
 {
-    #[Route('api/getmacbyaaaa/{name}', methods: ['GET', 'POST'])]
-    public function getMacByName($req_name): Response
+    #[Route('api/getmacbyaaaa/{req_name}', methods: ['GET', 'POST'])]
+    public function getMacByName(string $req_name): Response
     {
         try {
             $f_json = file_get_contents('../data/nameToMac.json');
-            $content = json_decode($f_json, true);
-            $mapping = $content['graph'];
+            $mapping = json_decode($f_json, true);
         } catch (Exception $e) {
-            return $this->json('JSON exception',  $e->getMessage());
+            return $this->json(array('JSON exception' =>  $e->getMessage()));
         }
         foreach ($mapping as $name => $mac) {
             if ($req_name == $name) {
                 return $this->json($mac);
             }
         }
-        return $this->json("Error", "No matching");
+        return $this->json(array("Error" => "No matching"));
     }
 }
