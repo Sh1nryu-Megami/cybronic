@@ -4,13 +4,43 @@ import $ from 'jquery';
 import {fetch_addr} from '/src/config';
 import PersonPoint from '/src/components/images/PersonPoint.vue';
 
-const devices = ref([]);
-const devices_comp = ref([]);
-const props = defineProps(['map']);
+const props = defineProps(['map', 'init', 'curPath']);
+
+const device = ref({
+  x: 0,
+  y: 0,
+});
+
+const device_comp = ref({
+  x: 0,
+  y: 0,
+});
+
+// const path = ref([]);
+
 const layout = ref({
   width: 0,
   height: 0,
 });
+const interval_id = ref(0);
+
+async function getPos() {
+  let mac = localStorage.getItem('mac');
+
+  let data = await fetch(fetch_addr + 'api/getcoordbymac/' + mac);
+  data = await data.json();
+  data = JSON.parse(data);
+
+  if (data.x === undefined || data.y === undefined) {
+    return;
+  }
+
+
+  device.value.x = data.x;
+  device.value.y = data.y;
+
+  // console.log('aa')
+}
 
 onMounted(() => {
   fetch(fetch_addr + 'api/getlayout')
@@ -20,28 +50,16 @@ onMounted(() => {
     layout.value.height = data.height
   });
 
-  setInterval( async function get() {
-    let data = await fetch(fetch_addr + 'api/getall');
-    data = await data.json();
-
-    if (data[0] == undefined || data[0] == null) {
-      return;
-    }
-
-    let arr = Object.entries(data[0]);
-    devices.value = [];
-
-    for (let i = 0; i < arr.length; i++) {
-      devices.value.push({
-        mac: arr[i][0],
-        coords: JSON.parse(arr[i][1]),
-        idx: i,
-      });
-    }
-  }, 100)
+  interval_id.value = setInterval(getPos, 100);
 });
 
-watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
+watch(() => props.init, () => {
+  clearInterval(interval_id.value);
+  interval_id.value = setInterval(getPos, 100);
+});
+
+watch(() => ({device: device.value, updated: props.map.updated}), () => {
+  // console.log('aa')
   let map = $("#map");
   let personPoint = $(".personPoint");
   const offset = map.offset();
@@ -57,33 +75,24 @@ watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
     pointOffsetX = width / 2;
     pointOffsetY = height / 2;
   }
+  
+  const x_rel = device.value.x / layout.value.width * map_width;
+  const y_rel = device.value.y / layout.value.height * map_height;
 
-  devices_comp.value = [];
+  device_comp.value.x = offset.left + x_rel - pointOffsetX;
+  device_comp.value.y = offset.top + y_rel - pointOffsetY;
 
-  for (const {idx, mac, coords: {x, y}} of devices.value) {
-    const x_rel = x / layout.value.width * map_width;
-    const y_rel = y / layout.value.height * map_height;
-
-    devices_comp.value.push({
-      idx: idx,
-      mac: mac,
-      coords: {
-        x: offset.left + x_rel - pointOffsetX,
-        y: offset.top + y_rel - pointOffsetY,
-      },
-    });
-  }
+  console.log(device.value.x, device.value.y);
+  console.log(device_comp.value.x, device_comp.value.y);
 });
 
 </script>
 
 <template>
   <PersonPoint
-    v-for="{idx, mac, coords: {x, y}} of devices_comp"
-    :key="mac"
-    :x="x"
-    :y="y"
-    :num="idx"
+    :x="device_comp.x"
+    :y="device_comp.y"
+    :num="0"
   />
 </template>
 

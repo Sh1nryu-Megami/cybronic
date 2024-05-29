@@ -12,6 +12,8 @@ import PersonPositioning from '/src/components/PersonPositioning.vue';
 import SideButtons from '/src/components/SideButtons.vue';
 import { fetch_addr } from '/src/config.js';
 
+const props = defineProps(['curPath', 'init']);
+
 const img_ref = ref()
 const position_data = ref({
   touched: false,
@@ -48,19 +50,19 @@ onBeforeUnmount(() => {
   document.removeEventListener('resize', handlers.value.resize);
 });
 
-function zoom(newX, newY, newH, newW) {
-  position_data.value.map.h = newH;
-  position_data.value.map.w = newW;
-  position_data.value.map.x = newX;
-  position_data.value.map.y = newY;
-}
+// function zoom(newX, newY, newH, newW) {
+//   position_data.value.map.h = newH;
+//   position_data.value.map.w = newW;
+//   position_data.value.map.x = newX;
+//   position_data.value.map.y = newY;
+// }
 
 </script>
 
 <template>
   <div :class="$style.bg_map" ref="img_ref">
     <img id="map" :src="fetch_addr + 'api/getview'" />
-    <PersonPositioning :map="position_data" />
+    <PersonPositioning :map="position_data" :init="props.init" :curPath="props.curPath" />
     <SideButtons />
   </div>
 </template>

@@ -1,31 +1,527 @@
 {
   "bounds": {
-    "width": "175.1",
-    "height": "134.9",
-    "scale": 2.6285714285714286
+    "width": 1739.9,
+    "height": 312.2,
+    "scale": 1.123
   },
   "halls": {
-    "hall_hor": {
-      "id": "hall_hor",
+    "f_x5F_hor": {
+      "id": "f_x5F_hor",
       "x": 0.0,
-      "y": 39.7,
-      "width": 175.1,
-      "height": 95.2,
-      "baseline": 87.30000000000001
+      "y": 53.2,
+      "width": 526.3,
+      "height": 255.0,
+      "baseline": 180.7,
+      "margin": 5.263
+    },
+    "e_x5F_hor": {
+      "id": "e_x5F_hor",
+      "x": 0.0,
+      "y": 0.0,
+      "width": 220.1,
+      "height": 53.2,
+      "baseline": 26.6,
+      "margin": 2.201
+    },
+    "d_x5F_hor": {
+      "id": "d_x5F_hor",
+      "x": 407.6,
+      "y": 2.1,
+      "width": 118.6,
+      "height": 51.2,
+      "baseline": 27.700000000000003,
+      "margin": 1.186
+    },
+    "c_x5F_hor": {
+      "id": "c_x5F_hor",
+      "x": 527.0,
+      "y": 1.5,
+      "width": 693.5,
+      "height": 257.5,
+      "baseline": 130.25,
+      "margin": 6.9350000000000005
+    },
+    "b_x5F_hor": {
+      "id": "b_x5F_hor",
+      "x": 1220.5,
+      "y": 55.2,
+      "width": 519.4,
+      "height": 257.0,
+      "baseline": 183.7,
+      "margin": 5.194
+    },
+    "a_x5F_hor": {
+      "id": "a_x5F_hor",
+      "x": 1513.6,
+      "y": 0.0,
+      "width": 226.2,
+      "height": 54.4,
+      "baseline": 27.2,
+      "margin": 2.262
     }
   },
   "lighthouses": {
-    "white": {
-      "id": "white",
-      "x": 151.0,
-      "y": 43.5,
-      "hall": "hall_hor"
+    "lh": {
+      "id": "lh",
+      "x": 551.8499999999999,
+      "y": 110.14999999999999,
+      "hall": "c_x5F_hor"
+    }
+  },
+  "graph": {
+    "room26": {
+      "x": 92.89999999999999,
+      "y": 157.7,
+      "adjacent": [
+        "vertex_to_room26"
+      ]
     },
-    "black": {
-      "id": "black",
-      "x": 5.0,
-      "y": 40.7,
-      "hall": "hall_hor"
+    "room1": {
+      "x": 48.4,
+      "y": 200.1,
+      "adjacent": [
+        "vertex_to_room1"
+      ]
+    },
+    "room2": {
+      "x": 177.29999999999998,
+      "y": 200.1,
+      "adjacent": [
+        "vertex_to_room2"
+      ]
+    },
+    "room3": {
+      "x": 276.20000000000005,
+      "y": 200.1,
+      "adjacent": [
+        "vertex_to_room3"
+      ]
+    },
+    "room4": {
+      "x": 342.5,
+      "y": 200.1,
+      "adjacent": [
+        "vertex_to_room4"
+      ]
+    },
+    "room5": {
+      "x": 387.70000000000005,
+      "y": 200.2,
+      "adjacent": [
+        "vertex_to_room5"
+      ]
+    },
+    "room6": {
+      "x": 435.70000000000005,
+      "y": 200.0,
+      "adjacent": [
+        "vertex_to_room22-6"
+      ]
+    },
+    "room7": {
+      "x": 487.1,
+      "y": 200.0,
+      "adjacent": [
+        "vertex_to_room7"
+      ]
+    },
+    "room8": {
+      "x": 562.9,
+      "y": 152.2,
+      "adjacent": [
+        "vertex_to_room8"
+      ]
+    },
+    "room9": {
+      "x": 653.1,
+      "y": 151.6,
+      "adjacent": [
+        "vertex_to_room9"
+      ]
+    },
+    "room10": {
+      "x": 773.4,
+      "y": 164.5,
+      "adjacent": [
+        "vertex_to_room10-11"
+      ]
+    },
+    "room11": {
+      "x": 971.8000000000001,
+      "y": 167.1,
+      "adjacent": [
+        "vertex_to_room10-11"
+      ]
+    },
+    "room12": {
+      "x": 1096.3999999999999,
+      "y": 153.6,
+      "adjacent": [
+        "vertex_to_room12"
+      ]
+    },
+    "room13": {
+      "x": 1178.3999999999999,
+      "y": 153.6,
+      "adjacent": [
+        "vertex_to_room13"
+      ]
+    },
+    "room14": {
+      "x": 1260.1,
+      "y": 201.2,
+      "adjacent": [
+        "vertex_to_room14"
+      ]
+    },
+    "room15": {
+      "x": 1461.0,
+      "y": 201.2,
+      "adjacent": [
+        "vertex_to_room15"
+      ]
+    },
+    "room16": {
+      "x": 1569.3999999999999,
+      "y": 202.4,
+      "adjacent": [
+        "vertex_to_room16"
+      ]
+    },
+    "room17": {
+      "x": 1647.8999999999999,
+      "y": 156.79999999999998,
+      "adjacent": [
+        "vertex_to_room17"
+      ]
+    },
+    "room18": {
+      "x": 1440.1999999999998,
+      "y": 156.79999999999998,
+      "adjacent": [
+        "vertex_to_room18"
+      ]
+    },
+    "room19": {
+      "x": 1400.5,
+      "y": 156.5,
+      "adjacent": [
+        "vertex_to_room19"
+      ]
+    },
+    "room20": {
+      "x": 1304.8,
+      "y": 156.2,
+      "adjacent": [
+        "vertex_to_room20"
+      ]
+    },
+    "room21": {
+      "x": 636.4,
+      "y": 109.89999999999999,
+      "adjacent": [
+        "vertex_to_room21"
+      ]
+    },
+    "room22": {
+      "x": 433.1,
+      "y": 157.7,
+      "adjacent": [
+        "vertex_to_room22-6"
+      ]
+    },
+    "room23": {
+      "x": 326.8,
+      "y": 158.0,
+      "adjacent": [
+        "vertex_to_room23"
+      ]
+    },
+    "room24": {
+      "x": 284.6,
+      "y": 157.2,
+      "adjacent": [
+        "vertex_to_room24"
+      ]
+    },
+    "room25": {
+      "x": 238.1,
+      "y": 157.2,
+      "adjacent": [
+        "vertex_to_room25"
+      ]
+    },
+    "hall_point6": {
+      "x": 494.8,
+      "y": 181.1,
+      "adjacent": [
+        "hall_point5",
+        "vertex_to_room7"
+      ]
+    },
+    "hall_point5": {
+      "x": 494.40000000000003,
+      "y": 130.1,
+      "adjacent": [
+        "vertex_to_room8",
+        "hall_point6"
+      ]
+    },
+    "hall_point4": {
+      "x": 773.5,
+      "y": 130.1,
+      "adjacent": [
+        "hall_point7",
+        "vertex_to_room9"
+      ]
+    },
+    "hall_point3": {
+      "x": 971.5,
+      "y": 131.0,
+      "adjacent": [
+        "vertex_to_room12",
+        "hall_point7"
+      ]
+    },
+    "hall_point2": {
+      "x": 1239.8999999999999,
+      "y": 130.5,
+      "adjacent": [
+        "hall_point1",
+        "vertex_to_room13"
+      ]
+    },
+    "hall_point1": {
+      "x": 1239.8,
+      "y": 183.1,
+      "adjacent": [
+        "vertex_to_room14",
+        "hall_point2"
+      ]
+    },
+    "hall_point7": {
+      "x": 873.0999999999999,
+      "y": 131.0,
+      "adjacent": [
+        "hall_point3",
+        "hall_point4",
+        "vertex_to_room10-11"
+      ]
+    },
+    "vertex_to_room14": {
+      "x": 1260.3,
+      "y": 183.6,
+      "adjacent": [
+        "hall_point1",
+        "room14",
+        "vertex_to_room20"
+      ]
+    },
+    "vertex_to_room20": {
+      "x": 1305.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room14",
+        "room20",
+        "vertex_to_room19"
+      ]
+    },
+    "vertex_to_room19": {
+      "x": 1400.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room20",
+        "room19",
+        "vertex_to_room18"
+      ]
+    },
+    "vertex_to_room18": {
+      "x": 1440.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room19",
+        "room18",
+        "vertex_to_room15"
+      ]
+    },
+    "vertex_to_room15": {
+      "x": 1461.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room18",
+        "room15",
+        "vertex_to_room16"
+      ]
+    },
+    "vertex_to_room16": {
+      "x": 1569.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room15",
+        "room16",
+        "vertex_to_room17"
+      ]
+    },
+    "vertex_to_room17": {
+      "x": 1648.3,
+      "y": 183.6,
+      "adjacent": [
+        "vertex_to_room16",
+        "room17"
+      ]
+    },
+    "vertex_to_room13": {
+      "x": 1178.4,
+      "y": 130.4,
+      "adjacent": [
+        "hall_point2",
+        "room13",
+        "vertex_to_room12"
+      ]
+    },
+    "vertex_to_room12": {
+      "x": 1096.4,
+      "y": 131.0,
+      "adjacent": [
+        "vertex_to_room13",
+        "room12",
+        "hall_point3"
+      ]
+    },
+    "vertex_to_room10-11": {
+      "x": 873.2,
+      "y": 165.9,
+      "adjacent": [
+        "room11",
+        "room10",
+        "hall_point7"
+      ]
+    },
+    "vertex_to_room9": {
+      "x": 653.1,
+      "y": 130.1,
+      "adjacent": [
+        "hall_point4",
+        "room9",
+        "vertex_to_room21"
+      ]
+    },
+    "vertex_to_room21": {
+      "x": 636.4,
+      "y": 130.1,
+      "adjacent": [
+        "vertex_to_room9",
+        "room21",
+        "vertex_to_room8"
+      ]
+    },
+    "vertex_to_room8": {
+      "x": 562.9,
+      "y": 130.1,
+      "adjacent": [
+        "vertex_to_room21",
+        "room8",
+        "hall_point5"
+      ]
+    },
+    "vertex_to_room7": {
+      "x": 487.3,
+      "y": 181.1,
+      "adjacent": [
+        "hall_point6",
+        "room7",
+        "vertex_to_room22-6"
+      ]
+    },
+    "vertex_to_room22-6": {
+      "x": 435.3,
+      "y": 181.1,
+      "adjacent": [
+        "vertex_to_room7",
+        "room22",
+        "room6",
+        "vertex_to_room5"
+      ]
+    },
+    "vertex_to_room5": {
+      "x": 387.8,
+      "y": 181.3,
+      "adjacent": [
+        "vertex_to_room22-6",
+        "room5",
+        "vertex_to_room4"
+      ]
+    },
+    "vertex_to_room4": {
+      "x": 342.3,
+      "y": 181.8,
+      "adjacent": [
+        "vertex_to_room5",
+        "room4",
+        "vertex_to_room23"
+      ]
+    },
+    "vertex_to_room23": {
+      "x": 326.3,
+      "y": 181.8,
+      "adjacent": [
+        "vertex_to_room4",
+        "room23",
+        "vertex_to_room24"
+      ]
+    },
+    "vertex_to_room24": {
+      "x": 284.3,
+      "y": 180.8,
+      "adjacent": [
+        "vertex_to_room23",
+        "room24",
+        "vertex_to_room3"
+      ]
+    },
+    "vertex_to_room3": {
+      "x": 276.3,
+      "y": 180.8,
+      "adjacent": [
+        "vertex_to_room24",
+        "room3",
+        "vertex_to_room25"
+      ]
+    },
+    "vertex_to_room25": {
+      "x": 238.3,
+      "y": 180.8,
+      "adjacent": [
+        "room25",
+        "vertex_to_room3",
+        "vertex_to_room2"
+      ]
+    },
+    "vertex_to_room2": {
+      "x": 177.3,
+      "y": 180.8,
+      "adjacent": [
+        "vertex_to_room25",
+        "room2",
+        "vertex_to_room26"
+      ]
+    },
+    "vertex_to_room26": {
+      "x": 93.3,
+      "y": 180.8,
+      "adjacent": [
+        "vertex_to_room2",
+        "room26",
+        "vertex_to_room1"
+      ]
+    },
+    "vertex_to_room1": {
+      "x": 48.3,
+      "y": 180.8,
+      "adjacent": [
+        "vertex_to_room26",
+        "room1"
+      ]
     }
   }
 }
