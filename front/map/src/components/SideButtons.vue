@@ -76,6 +76,7 @@ function zoomMinus(event) {
 	background-color: colors.$menu_bg;
 	background-image: url("../assets/PlusButton.svg");
 	background-size: cover;
+	border-radius: 10px;
 }
 
 .minus_button {
@@ -86,5 +87,6 @@ function zoomMinus(event) {
 	margin-top: 30%;
 	background-image: url("../assets/MinusButton.svg");
 	background-size: cover;
+	border-radius: 10px;
 }
 </style>
