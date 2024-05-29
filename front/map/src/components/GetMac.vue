@@ -1,7 +1,10 @@
 <script setup>
 import {ref} from 'vue';
+import {fetch_addr} from '/src/config.js';
 
 const id = ref('');
+const error = ref(false);
+const closed = ref(false);
 
 function parseInput(event) {
   const pre_id = event.target.value;
@@ -9,28 +12,46 @@ function parseInput(event) {
   event.target.value = id.value;
 }
 
+async function checkID() {
+  const resp = await fetch(fetch_addr + 'api/getmacbyaaaa/' + id.value);
+  const data = await resp.json();
+  
+  if (data.error !== undefined) {
+    error.value = true;
+  } else {
+    error.value = false;
+  }
+
+  if (data.answer !== undefined) {
+    localStorage.setItem('mac', data.answer);
+    closed.value = true;
+  }
+}
+
 </script>
 
 <template>
-<div :class="$style.cont">
+<div :class="[$style.cont, closed ? $style.contClosed : $style.contOpen]">
   <div :class="$style.bmenu">
     <div :class="$style.text">
       Введите идентификатор метки с обратной стороны устройства.
     </div>
-    <input 
-      :value="id"
-      @input="parseInput"
-      type="text"
-      :class="$style.input"
-      placeholder="????"
-      maxlength="4"
-    />
-    <div :class="$style.errorText">
-      Такого идентификатора нет
+    <div :class="$style.inputWrapper">
+      <input 
+        :value="id"
+        @input="parseInput"
+        type="text"
+        :class="$style.input"
+        placeholder="????"
+        maxlength="4"
+      />
+      <div :class="$style.errorText" :style="{opacity: error ? 1 : 0}">
+        Такого идентификатора нет
+      </div>
     </div>
     <button
       :class="[$style.button, id.length == 4 ? $style.buttonActive : $style.buttonDisabled]"
-      @click="parseInput"
+      @click="checkID"
     >
       Подтвердить
     </button>
@@ -45,9 +66,17 @@ function parseInput(event) {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0;
   left: 0;
   touch-action: none;
+  transition: top 0.5s ease-out;
+}
+
+.contOpen {
+  top: 0;
+}
+
+.contClosed {
+  top: 100vh;
 }
 
 .bmenu {
@@ -78,8 +107,16 @@ function parseInput(event) {
   font-size: 15px;
   font-weight: 500;
   color: colors.$error;
-  margin-bottom: 40px;
   text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .input {
@@ -94,7 +131,7 @@ function parseInput(event) {
   text-align: center;
   font-size: $font-size;
   color: colors.$outer_circle;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 }
 
 .button {

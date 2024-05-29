@@ -8,7 +8,7 @@ const is_init = ref(false);
 
 onMounted(() => {
   if (localStorage.getItem('mac') !== null) {
-    is_init.value = true;
+    // is_init.value = true;
   }
 });
 
