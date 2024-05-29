@@ -50,12 +50,12 @@ onBeforeUnmount(() => {
   document.removeEventListener('resize', handlers.value.resize);
 });
 
-function zoom(newX, newY, newH, newW) {
-  position_data.value.map.h = newH;
-  position_data.value.map.w = newW;
-  position_data.value.map.x = newX;
-  position_data.value.map.y = newY;
-}
+// function zoom(newX, newY, newH, newW) {
+//   position_data.value.map.h = newH;
+//   position_data.value.map.w = newW;
+//   position_data.value.map.x = newX;
+//   position_data.value.map.y = newY;
+// }
 
 </script>
 
