@@ -8,8 +8,6 @@ import ClearSvg from '/src/assets/clear_button.svg';
 import SettingsSvg from '/src/assets/settings.svg';
 import ArrowSvg from '/src/assets/arrow.svg';
 
-import $ from "jquery";
-
 const props = defineProps(['setPath']);
 
 const input_text = ref('');

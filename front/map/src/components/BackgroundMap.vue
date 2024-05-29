@@ -9,7 +9,8 @@ import {
   onResizeWrapper,
 } from '/src/handlers/bgMapHandler';
 import PersonPositioning from '/src/components/PersonPositioning.vue';
-import {fetch_addr} from '/src/config.js';
+import SideButtons from '/src/components/SideButtons.vue';
+import { fetch_addr } from '/src/config.js';
 
 const props = defineProps(['curPath', 'init']);
 
@@ -26,11 +27,11 @@ const position_data = ref({
   updated: false,
 });
 const handlers = ref({
-    start: setStartPosWrapper(position_data),
-    end: setEndPosWrapper(position_data),
-    cancel: setCancelPosWrapper(position_data),
-    move: setMovePosWrapper(position_data),
-    resize: onResizeWrapper(position_data),
+  start: setStartPosWrapper(position_data),
+  end: setEndPosWrapper(position_data),
+  cancel: setCancelPosWrapper(position_data),
+  move: setMovePosWrapper(position_data),
+  resize: onResizeWrapper(position_data),
 });
 
 onMounted(() => {
@@ -48,17 +49,27 @@ onBeforeUnmount(() => {
   document.removeEventListener('touchcancel', handlers.value.cancel);
   document.removeEventListener('resize', handlers.value.resize);
 });
+
+function zoom(newX, newY, newH, newW) {
+  position_data.value.map.h = newH;
+  position_data.value.map.w = newW;
+  position_data.value.map.x = newX;
+  position_data.value.map.y = newY;
+}
+
 </script>
 
 <template>
   <div :class="$style.bg_map" ref="img_ref">
     <img id="map" :src="fetch_addr + 'api/getview'" />
     <PersonPositioning :map="position_data" :init="props.init" :curPath="props.curPath" />
+    <SideButtons />
   </div>
 </template>
 
 <style module lang="scss">
 @use '/src/colors';
+
 .bg_map {
   position: absolute;
   top: 0;
@@ -68,7 +79,7 @@ onBeforeUnmount(() => {
   overflow: hidden;
   touch-action: none;
 
-  & > img {
+  &>img {
     height: 60%;
     position: relative;
     top: 10%;
