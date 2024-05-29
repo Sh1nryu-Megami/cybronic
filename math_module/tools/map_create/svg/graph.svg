@@ -1,179 +1,160 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1739.9 312.2">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #0dff00;
-      }
-
-      .cls-2 {
-        fill: blue;
-      }
-
-      .cls-3 {
-        fill: #0fa;
-      }
-
-      .cls-4 {
-        fill: #ff0;
-      }
-
-      .cls-5 {
-        fill: #fb7bff;
-      }
-
-      .cls-6 {
-        fill: #ffff78;
-      }
-
-      .cls-7 {
-        font-size: 12px;
-        font-family: MyriadPro-Regular, Myriad Pro;
-      }
-    </style>
-  </defs>
-  <g id="Слой_2" data-name="Слой 2">
-    <g id="Слой_1-2" data-name="Слой 1">
-      <g id="Graph">
-        <g id="rooms">
-          <rect id="room26" class="cls-1" x="90.32" y="155.1" width="5.2" height="5.2"/>
-          <rect id="room1" class="cls-1" x="45.8" y="197.5" width="5.2" height="5.2"/>
-          <rect id="room2" class="cls-1" x="174.7" y="197.5" width="5.2" height="5.2"/>
-          <rect id="room3" class="cls-1" x="273.6" y="197.5" width="5.2" height="5.2"/>
-          <rect id="room4" class="cls-1" x="339.9" y="197.5" width="5.2" height="5.2"/>
-          <rect id="room5" class="cls-1" x="385.15" y="197.55" width="5.2" height="5.2"/>
-          <rect id="room6" class="cls-1" x="433.1" y="197.45" width="5.2" height="5.2"/>
-          <rect id="room7" class="cls-1" x="484.48" y="197.45" width="5.2" height="5.2"/>
-          <rect id="room8" class="cls-1" x="560.27" y="149.55" width="5.2" height="5.2"/>
-          <rect id="room9" class="cls-1" x="650.46" y="149" width="5.2" height="5.2"/>
-          <rect id="room10" class="cls-1" x="770.85" y="161.92" width="5.2" height="5.2"/>
-          <rect id="room11" class="cls-1" x="969.2" y="164.52" width="5.2" height="5.2"/>
-          <rect id="room12" class="cls-1" x="1093.83" y="151" width="5.2" height="5.2"/>
-          <rect id="room13" class="cls-1" x="1175.8" y="151" width="5.2" height="5.2"/>
-          <rect id="room14" class="cls-1" x="1257.53" y="198.55" width="5.2" height="5.2"/>
-          <rect id="room15" class="cls-1" x="1458.37" y="198.55" width="5.2" height="5.2"/>
-          <rect id="room16" class="cls-1" x="1566.75" y="199.8" width="5.2" height="5.2"/>
-          <rect id="room17" class="cls-1" x="1645.35" y="154.2" width="5.2" height="5.2"/>
-          <rect id="room18" class="cls-1" x="1437.6" y="154.2" width="5.2" height="5.2"/>
-          <rect id="room19" class="cls-1" x="1397.9" y="153.9" width="5.2" height="5.2"/>
-          <rect id="room20" class="cls-1" x="1302.25" y="153.6" width="5.2" height="5.2"/>
-          <rect id="room21" class="cls-1" x="633.78" y="107.35" width="5.2" height="5.2"/>
-          <rect id="room22" class="cls-1" x="430.5" y="155.1" width="5.2" height="5.2"/>
-          <rect id="room23" class="cls-1" x="324.18" y="155.4" width="5.2" height="5.2"/>
-          <rect id="room24" class="cls-1" x="282" y="154.6" width="5.2" height="5.2"/>
-          <rect id="room25" class="cls-1" x="235.51" y="154.55" width="5.2" height="5.2"/>
-        </g>
-        <g id="hall_points">
-          <rect id="hall_point6" class="cls-2" x="490.3" y="176.6" width="9" height="9"/>
-          <rect id="hall_point5" class="cls-2" x="490.1" y="125.8" width="8.6" height="8.6"/>
-          <rect id="hall_point4" class="cls-2" x="769.15" y="125.8" width="8.6" height="8.6"/>
-          <rect id="hall_point3" class="cls-2" x="967.15" y="126.7" width="8.6" height="8.6"/>
-          <rect id="hall_point2" class="cls-2" x="1235.6" y="126.15" width="8.6" height="8.6"/>
-          <rect id="hall_point1" class="cls-2" x="1235.3" y="178.6" width="9" height="9"/>
-          <rect id="hall_point7" class="cls-2" x="868.85" y="126.7" width="8.6" height="8.6"/>
-        </g>
-        <g id="hall1_vertexes_to_rooms">
-          <rect id="vertex_to_room14" class="cls-3" x="1258.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room20" class="cls-3" x="1303.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room19" class="cls-3" x="1398.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room18" class="cls-3" x="1438.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room15" class="cls-3" x="1459.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room16" class="cls-3" x="1567.3" y="181.6" width="4" height="4"/>
-          <rect id="vertex_to_room17" class="cls-3" x="1646.3" y="181.6" width="4" height="4"/>
-        </g>
-        <g id="hall3_vertexes_to_rooms">
-          <rect id="vertex_to_room13" class="cls-3" x="1176.4" y="128.45" width="4" height="4"/>
-          <rect id="vertex_to_room12" class="cls-3" x="1094.43" y="129" width="4" height="4"/>
-        </g>
-        <g id="hall7_vertexes_to_rooms">
-          <rect id="vertex_to_room10-11" class="cls-3" x="871.15" y="163.92" width="4" height="4"/>
-        </g>
-        <g id="hall4_vertexes_to_rooms">
-          <rect id="vertex_to_room9" class="cls-3" x="651.06" y="128.1" width="4" height="4"/>
-          <rect id="vertex_to_room21" class="cls-3" x="634.38" y="128.1" width="4" height="4"/>
-          <rect id="vertex_to_room8" class="cls-3" x="560.87" y="128.1" width="4" height="4"/>
-        </g>
-        <g id="hall6_vertexes_to_rooms">
-          <rect id="vertex_to_room7" class="cls-3" x="485.3" y="179.1" width="4" height="4"/>
-          <rect id="vertex_to_room22-6" class="cls-3" x="433.3" y="179.1" width="4" height="4"/>
-          <rect id="vertex_to_room5" class="cls-3" x="385.75" y="179.3" width="4" height="4"/>
-          <rect id="vertex_to_room4" class="cls-3" x="340.3" y="179.8" width="4" height="4"/>
-          <rect id="vertex_to_room23" class="cls-3" x="324.3" y="179.8" width="4" height="4"/>
-          <rect id="vertex_to_room24" class="cls-3" x="282.3" y="178.8" width="4" height="4"/>
-          <rect id="vertex_to_room3" class="cls-3" x="274.3" y="178.8" width="4" height="4"/>
-          <rect id="vertex_to_room25" class="cls-3" x="236.3" y="178.8" width="4" height="4"/>
-          <rect id="vertex_to_room2" class="cls-3" x="175.3" y="178.8" width="4" height="4"/>
-          <rect id="vertex_to_room26" class="cls-3" x="91.3" y="178.8" width="4" height="4"/>
-          <rect id="vertex_to_room1" class="cls-3" x="46.3" y="178.8" width="4" height="4"/>
-        </g>
-        <g id="edges">
-          <rect id="edge_hp1_vr14" class="cls-4" x="1244.2" y="183.1" width="14.1" height="1.32"/>
-          <rect id="edge_r14_vr14" class="cls-4" x="1259.37" y="185.6" width="0.93" height="12.95"/>
-          <rect id="edge_vr14_vr20" class="cls-4" x="1261.77" y="183.1" width="41.53" height="1.32"/>
-          <rect id="edge_r20_vr20" class="cls-4" x="1304.09" y="158.8" width="1.21" height="22.8"/>
-          <rect id="edge_vr20_vr19" class="cls-4" x="1307.3" y="183.1" width="91" height="1.32"/>
-          <rect id="edge_r19_vr19" class="cls-4" x="1400.3" y="159.1" width="0.8" height="22.5"/>
-          <rect id="edge_vr19_vr18" class="cls-4" x="1402.3" y="183.1" width="36" height="1.32"/>
-          <rect id="edge_r18_vr18" class="cls-4" x="1439.56" y="159.4" width="1.33" height="22.2"/>
-          <rect id="edge_vr18_vr15" class="cls-4" x="1442.3" y="183.1" width="17" height="1.32"/>
-          <rect id="edge_r15_vr15" class="cls-4" x="1460.31" y="185.6" width="1.8" height="12.95"/>
-          <rect id="edge_vr15_vr16" class="cls-4" x="1463.3" y="183.1" width="104" height="1.32"/>
-          <rect id="edge_r16_vr16" class="cls-4" x="1568.59" y="185.6" width="1.26" height="14.2"/>
-          <rect id="edge_vr16_vr17" class="cls-4" x="1571.3" y="183.1" width="75" height="1.32"/>
-          <rect id="edge_r17_vr17" class="cls-4" x="1647.95" y="159.3" width="1.11" height="22.3"/>
-          <rect id="edge_hp2_hp1" class="cls-4" x="1238.53" y="134.75" width="2.65" height="43.85"/>
-          <rect id="edge_vr13_hp2" class="cls-4" x="1180.4" y="130.1" width="55.2" height="1.3"/>
-          <rect id="edge_r13_vr13" class="cls-4" x="1177.33" y="132.45" width="1.89" height="18.55"/>
-          <rect id="edge_vr12_vr13" class="cls-4" x="1098.43" y="130.1" width="77.97" height="1.3"/>
-          <rect id="edge_r12_vr12" class="cls-4" x="1095.67" y="133" width="1.52" height="18"/>
-          <rect id="edge_hp3_vr12" class="cls-4" x="975.75" y="130.1" width="118.68" height="1.3"/>
-          <rect id="edge_hp7_hp3" class="cls-4" x="877.45" y="130.1" width="89.7" height="2.4"/>
-          <rect id="edge_hp4_hp7" class="cls-4" x="777.75" y="130.1" width="91.1" height="2.4"/>
-          <rect id="edge_vr9_hp4" class="cls-4" x="655.06" y="130.1" width="114.09" height="2"/>
-          <rect id="edge_r9_vr9" class="cls-4" x="651.92" y="132.1" width="2.08" height="16.9"/>
-          <rect id="edge_vr21_vr9" class="cls-4" x="638.38" y="129.28" width="12.67" height="1.82"/>
-          <rect id="edge_r21_vr21" class="cls-4" x="635.25" y="112.55" width="1.89" height="15.55"/>
-          <rect id="edge_vr8_vr21" class="cls-4" x="564.87" y="129.28" width="69.52" height="1.82"/>
-          <rect id="edge_r8_vr8" class="cls-4" x="562.11" y="132.1" width="1.71" height="17.45"/>
-          <rect id="edge_hp5_vr8" class="cls-4" x="498.7" y="129.28" width="62.17" height="1.82"/>
-          <rect id="edge_hp6_hp5" class="cls-4" x="493.52" y="134.4" width="2.46" height="42.2"/>
-          <rect id="edge_vr7_hp6" class="cls-4" x="489.3" y="180.56" width="1" height="1"/>
-          <rect id="edge_r7_vr7" class="cls-4" x="486.32" y="183.1" width="1.61" height="14.4"/>
-          <rect id="edge_vr22-6_vr7" class="cls-4" x="437.3" y="180.56" width="48" height="1.58"/>
-          <rect id="edge_r22_vr22-6" class="cls-4" x="433.3" y="160.3" width="1.39" height="18.8"/>
-          <rect id="edge_r6_vr22-6" class="cls-4" x="434.69" y="183.1" width="1.71" height="14.35"/>
-          <rect id="edge_vr5_vr22-6" class="cls-4" x="389.75" y="180.56" width="43.55" height="1.58"/>
-          <rect id="edge_r5_vr5" class="cls-4" x="386.91" y="183.3" width="1.83" height="14.25"/>
-          <rect id="edge_vr4_vr5" class="cls-4" x="344.3" y="180.88" width="41.45" height="1.58"/>
-          <rect id="edge_r4_vr4" class="cls-4" x="341.56" y="183.8" width="1.77" height="13.75"/>
-          <rect id="edge_vr23_vr4" class="cls-4" x="328.3" y="181.3" width="12" height="1.47"/>
-          <rect id="edge_r23_vr23" class="cls-4" x="325.14" y="160.6" width="2.4" height="19.2"/>
-          <rect id="edge_vr24_vr23" class="cls-4" x="286.3" y="180.31" width="37.88" height="1.49"/>
-          <rect id="edge_r24_vr24" class="cls-4" x="283.9" y="159.8" width="1.39" height="19"/>
-          <rect id="edge_vr3_vr24" class="cls-4" x="278.3" y="180.31" width="4" height="1.36"/>
-          <rect id="edge_r3_vr3" class="cls-4" x="275.5" y="182.8" width="1.45" height="14.7"/>
-          <rect id="edge_r25_vr25" class="cls-4" x="236.97" y="159.75" width="2.15" height="19.05"/>
-          <rect id="edge_vr25_vr3" class="cls-4" x="240.3" y="179.93" width="34" height="1.37"/>
-          <rect id="edge_vr2_vr25" class="cls-4" x="179.3" y="179.93" width="57" height="1.37"/>
-          <rect id="edge_r2_vr2" class="cls-4" x="176.59" y="182.8" width="1.52" height="14.7"/>
-          <rect id="edge_vr26_vr2" class="cls-4" x="95.3" y="179.93" width="80" height="1.37"/>
-          <rect id="edge_r26_vr26" class="cls-4" x="92.34" y="160.3" width="1.77" height="18.5"/>
-          <rect id="edge_vr26_vr1" class="cls-4" x="50.3" y="179.93" width="41" height="1.37"/>
-          <rect id="edge_r1_vr1" class="cls-4" x="47.75" y="182.8" width="1.52" height="14.7"/>
-          <rect id="edge_r11_vr10-11" class="cls-4" x="875.15" y="165.09" width="94.05" height="2.03"/>
-          <rect id="edge_r10_vr10-11" class="cls-4" x="776.05" y="163.92" width="95.1" height="2"/>
-          <rect id="edge_vr10-11_hp7" class="cls-4" x="872.09" y="135.3" width="1.77" height="28.62"/>
-        </g>
-      </g>
-      <rect id="lh" class="cls-5" x="539.75" y="108.85" width="24.06" height="2.65"/>
-    </g>
-    <g id="sketch">
-      <rect class="cls-6" y="53.25" width="526.3" height="254.95"/>
-      <rect class="cls-6" width="220.15" height="53.25"/>
-      <rect class="cls-6" x="407.65" y="2.1" width="118.65" height="51.15"/>
-      <rect class="cls-6" x="526.97" y="1.5" width="693.53" height="257.53"/>
-      <rect class="cls-6" x="1220.5" y="55.2" width="519.4" height="257"/>
-      <rect class="cls-6" x="1513.6" width="226.2" height="54.4"/>
-      <text class="cls-7" transform="translate(66.45 67.88)">scale=1.123</text>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1739.9 312.2" style="enable-background:new 0 0 1739.9 312.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFF78;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:12px;}
+	.st3{fill:#0DFF00;}
+	.st4{fill:#0000FF;}
+	.st5{fill:#00FFAA;}
+	.st6{fill:#FFFF00;}
+	.st7{fill:#FB7BFF;}
+</style>
+<g id="Слой_2_00000165926781525492571140000012260056079977343618_">
+	<g id="Слой_1-2">
+		<g id="sketch">
+			<rect id="f_x5F_hor" y="53.2" class="st0" width="526.3" height="255"/>
+			<rect id="e_x5F_hor" class="st0" width="220.1" height="53.2"/>
+			<rect id="d_x5F_hor" x="407.6" y="2.1" class="st0" width="118.6" height="51.2"/>
+			<rect id="c_x5F_hor" x="527" y="1.5" class="st0" width="693.5" height="257.5"/>
+			<rect id="b_x5F_hor" x="1220.5" y="55.2" class="st0" width="519.4" height="257"/>
+			<rect id="a_x5F_hor" x="1513.6" class="st0" width="226.2" height="54.4"/>
+			<text transform="matrix(1 0 0 1 66.45 67.88)" class="st1 st2">scale=1.123</text>
+		</g>
+		<g id="rooms">
+			<rect id="room26" x="90.3" y="155.1" class="st3" width="5.2" height="5.2"/>
+			<rect id="room1" x="45.8" y="197.5" class="st3" width="5.2" height="5.2"/>
+			<rect id="room2" x="174.7" y="197.5" class="st3" width="5.2" height="5.2"/>
+			<rect id="room3" x="273.6" y="197.5" class="st3" width="5.2" height="5.2"/>
+			<rect id="room4" x="339.9" y="197.5" class="st3" width="5.2" height="5.2"/>
+			<rect id="room5" x="385.1" y="197.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room6" x="433.1" y="197.4" class="st3" width="5.2" height="5.2"/>
+			<rect id="room7" x="484.5" y="197.4" class="st3" width="5.2" height="5.2"/>
+			<rect id="room8" x="560.3" y="149.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room9" x="650.5" y="149" class="st3" width="5.2" height="5.2"/>
+			<rect id="room10" x="770.8" y="161.9" class="st3" width="5.2" height="5.2"/>
+			<rect id="room11" x="969.2" y="164.5" class="st3" width="5.2" height="5.2"/>
+			<rect id="room12" x="1093.8" y="151" class="st3" width="5.2" height="5.2"/>
+			<rect id="room13" x="1175.8" y="151" class="st3" width="5.2" height="5.2"/>
+			<rect id="room14" x="1257.5" y="198.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room15" x="1458.4" y="198.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room16" x="1566.8" y="199.8" class="st3" width="5.2" height="5.2"/>
+			<rect id="room17" x="1645.3" y="154.2" class="st3" width="5.2" height="5.2"/>
+			<rect id="room18" x="1437.6" y="154.2" class="st3" width="5.2" height="5.2"/>
+			<rect id="room19" x="1397.9" y="153.9" class="st3" width="5.2" height="5.2"/>
+			<rect id="room20" x="1302.2" y="153.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room21" x="633.8" y="107.3" class="st3" width="5.2" height="5.2"/>
+			<rect id="room22" x="430.5" y="155.1" class="st3" width="5.2" height="5.2"/>
+			<rect id="room23" x="324.2" y="155.4" class="st3" width="5.2" height="5.2"/>
+			<rect id="room24" x="282" y="154.6" class="st3" width="5.2" height="5.2"/>
+			<rect id="room25" x="235.5" y="154.6" class="st3" width="5.2" height="5.2"/>
+		</g>
+		<g id="Graph">
+			<g id="hall_points">
+				<rect id="hall_point6" x="490.3" y="176.6" class="st4" width="9" height="9"/>
+				<rect id="hall_point5" x="490.1" y="125.8" class="st4" width="8.6" height="8.6"/>
+				<rect id="hall_point4" x="769.2" y="125.8" class="st4" width="8.6" height="8.6"/>
+				<rect id="hall_point3" x="967.2" y="126.7" class="st4" width="8.6" height="8.6"/>
+				<rect id="hall_point2" x="1235.6" y="126.2" class="st4" width="8.6" height="8.6"/>
+				<rect id="hall_point1" x="1235.3" y="178.6" class="st4" width="9" height="9"/>
+				<rect id="hall_point7" x="868.8" y="126.7" class="st4" width="8.6" height="8.6"/>
+			</g>
+			<g id="hall1_vertexes_to_rooms">
+				<rect id="vertex_to_room14" x="1258.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room20" x="1303.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room19" x="1398.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room18" x="1438.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room15" x="1459.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room16" x="1567.3" y="181.6" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room17" x="1646.3" y="181.6" class="st5" width="4" height="4"/>
+			</g>
+			<g id="hall3_vertexes_to_rooms">
+				<rect id="vertex_to_room13" x="1176.4" y="128.4" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room12" x="1094.4" y="129" class="st5" width="4" height="4"/>
+			</g>
+			<g id="hall7_vertexes_to_rooms">
+				<rect id="vertex_to_room10-11" x="871.2" y="163.9" class="st5" width="4" height="4"/>
+			</g>
+			<g id="hall4_vertexes_to_rooms">
+				<rect id="vertex_to_room9" x="651.1" y="128.1" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room21" x="634.4" y="128.1" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room8" x="560.9" y="128.1" class="st5" width="4" height="4"/>
+			</g>
+			<g id="hall6_vertexes_to_rooms">
+				<rect id="vertex_to_room7" x="485.3" y="179.1" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room22-6" x="433.3" y="179.1" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room5" x="385.8" y="179.3" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room4" x="340.3" y="179.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room23" x="324.3" y="179.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room24" x="282.3" y="178.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room3" x="274.3" y="178.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room25" x="236.3" y="178.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room2" x="175.3" y="178.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room26" x="91.3" y="178.8" class="st5" width="4" height="4"/>
+				<rect id="vertex_to_room1" x="46.3" y="178.8" class="st5" width="4" height="4"/>
+			</g>
+			<g id="edges">
+				<rect id="edge_hp1_vr14" x="1244.2" y="183.1" class="st6" width="14.1" height="1.3"/>
+				<rect id="edge_r14_vr14" x="1259.4" y="185.6" class="st6" width="0.9" height="12.9"/>
+				<rect id="edge_vr14_vr20" x="1261.8" y="183.1" class="st6" width="41.5" height="1.3"/>
+				<rect id="edge_r20_vr20" x="1304.1" y="158.8" class="st6" width="1.2" height="22.8"/>
+				<rect id="edge_vr20_vr19" x="1307.3" y="183.1" class="st6" width="91" height="1.3"/>
+				<rect id="edge_r19_vr19" x="1400.3" y="159.1" class="st6" width="0.8" height="22.5"/>
+				<rect id="edge_vr19_vr18" x="1402.3" y="183.1" class="st6" width="36" height="1.3"/>
+				<rect id="edge_r18_vr18" x="1439.6" y="159.4" class="st6" width="1.3" height="22.2"/>
+				<rect id="edge_vr18_vr15" x="1442.3" y="183.1" class="st6" width="17" height="1.3"/>
+				<rect id="edge_r15_vr15" x="1460.3" y="185.6" class="st6" width="1.8" height="12.9"/>
+				<rect id="edge_vr15_vr16" x="1463.3" y="183.1" class="st6" width="104" height="1.3"/>
+				<rect id="edge_r16_vr16" x="1568.6" y="185.6" class="st6" width="1.3" height="14.2"/>
+				<rect id="edge_vr16_vr17" x="1571.3" y="183.1" class="st6" width="75" height="1.3"/>
+				<rect id="edge_r17_vr17" x="1647.9" y="159.3" class="st6" width="1.1" height="22.3"/>
+				<rect id="edge_hp2_hp1" x="1238.5" y="134.8" class="st6" width="2.7" height="43.9"/>
+				<rect id="edge_vr13_hp2" x="1180.4" y="130.1" class="st6" width="55.2" height="1.3"/>
+				<rect id="edge_r13_vr13" x="1177.3" y="132.4" class="st6" width="1.9" height="18.6"/>
+				<rect id="edge_vr12_vr13" x="1098.4" y="130.1" class="st6" width="78" height="1.3"/>
+				<rect id="edge_r12_vr12" x="1095.7" y="133" class="st6" width="1.5" height="18"/>
+				<rect id="edge_hp3_vr12" x="975.8" y="130.1" class="st6" width="118.7" height="1.3"/>
+				<rect id="edge_hp7_hp3" x="877.5" y="130.1" class="st6" width="89.7" height="2.4"/>
+				<rect id="edge_hp4_hp7" x="777.8" y="130.1" class="st6" width="91.1" height="2.4"/>
+				<rect id="edge_vr9_hp4" x="655.1" y="130.1" class="st6" width="114.1" height="2"/>
+				<rect id="edge_r9_vr9" x="651.9" y="132.1" class="st6" width="2.1" height="16.9"/>
+				<rect id="edge_vr21_vr9" x="638.4" y="129.3" class="st6" width="12.7" height="1.8"/>
+				<rect id="edge_r21_vr21" x="635.2" y="112.6" class="st6" width="1.9" height="15.6"/>
+				<rect id="edge_vr8_vr21" x="564.9" y="129.3" class="st6" width="69.5" height="1.8"/>
+				<rect id="edge_r8_vr8" x="562.1" y="132.1" class="st6" width="1.7" height="17.4"/>
+				<rect id="edge_hp5_vr8" x="498.7" y="129.3" class="st6" width="62.2" height="1.8"/>
+				<rect id="edge_hp6_hp5" x="493.5" y="134.4" class="st6" width="2.5" height="42.2"/>
+				<rect id="edge_vr7_hp6" x="489.3" y="180.6" class="st6" width="1" height="1"/>
+				<rect id="edge_r7_vr7" x="486.3" y="183.1" class="st6" width="1.6" height="14.4"/>
+				<rect id="edge_vr22-6_vr7" x="437.3" y="180.6" class="st6" width="48" height="1.6"/>
+				<rect id="edge_r22_vr22-6" x="433.3" y="160.3" class="st6" width="1.4" height="18.8"/>
+				<rect id="edge_r6_vr22-6" x="434.7" y="183.1" class="st6" width="1.7" height="14.4"/>
+				<rect id="edge_vr5_vr22-6" x="389.8" y="180.6" class="st6" width="43.5" height="1.6"/>
+				<rect id="edge_r5_vr5" x="386.9" y="183.3" class="st6" width="1.8" height="14.2"/>
+				<rect id="edge_vr4_vr5" x="344.3" y="180.9" class="st6" width="41.5" height="1.6"/>
+				<rect id="edge_r4_vr4" x="341.6" y="183.8" class="st6" width="1.8" height="13.8"/>
+				<rect id="edge_vr23_vr4" x="328.3" y="181.3" class="st6" width="12" height="1.5"/>
+				<rect id="edge_r23_vr23" x="325.1" y="160.6" class="st6" width="2.4" height="19.2"/>
+				<rect id="edge_vr24_vr23" x="286.3" y="180.3" class="st6" width="37.9" height="1.5"/>
+				<rect id="edge_r24_vr24" x="283.9" y="159.8" class="st6" width="1.4" height="19"/>
+				<rect id="edge_vr3_vr24" x="278.3" y="180.3" class="st6" width="4" height="1.4"/>
+				<rect id="edge_r3_vr3" x="275.5" y="182.8" class="st6" width="1.5" height="14.7"/>
+				<rect id="edge_r25_vr25" x="237" y="159.8" class="st6" width="2.1" height="19.1"/>
+				<rect id="edge_vr25_vr3" x="240.3" y="179.9" class="st6" width="34" height="1.4"/>
+				<rect id="edge_vr2_vr25" x="179.3" y="179.9" class="st6" width="57" height="1.4"/>
+				<rect id="edge_r2_vr2" x="176.6" y="182.8" class="st6" width="1.5" height="14.7"/>
+				<rect id="edge_vr26_vr2" x="95.3" y="179.9" class="st6" width="80" height="1.4"/>
+				<rect id="edge_r26_vr26" x="92.3" y="160.3" class="st6" width="1.8" height="18.5"/>
+				<rect id="edge_vr26_vr1" x="50.3" y="179.9" class="st6" width="41" height="1.4"/>
+				<rect id="edge_r1_vr1" x="47.8" y="182.8" class="st6" width="1.5" height="14.7"/>
+				<rect id="edge_r11_vr10-11" x="875.2" y="165.1" class="st6" width="94" height="2"/>
+				<rect id="edge_r10_vr10-11" x="776" y="163.9" class="st6" width="95.1" height="2"/>
+				<rect id="edge_vr10-11_hp7" x="872.1" y="135.3" class="st6" width="1.8" height="28.6"/>
+			</g>
+		</g>
+		<rect id="lh" x="539.8" y="108.8" class="st7" width="24.1" height="2.7"/>
+	</g>
+</g>
 </svg>

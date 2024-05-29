@@ -11,6 +11,8 @@ import {
 import PersonPositioning from '/src/components/PersonPositioning.vue';
 import {fetch_addr} from '/src/config.js';
 
+const props = defineProps(['curPath', 'init']);
+
 const img_ref = ref()
 const position_data = ref({
   touched: false,
@@ -51,7 +53,7 @@ onBeforeUnmount(() => {
 <template>
   <div :class="$style.bg_map" ref="img_ref">
     <img id="map" :src="fetch_addr + 'api/getview'" />
-    <PersonPositioning :map="position_data" />
+    <PersonPositioning :map="position_data" :init="props.init" :curPath="props.curPath" />
   </div>
 </template>
 

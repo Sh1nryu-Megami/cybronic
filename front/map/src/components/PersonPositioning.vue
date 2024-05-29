@@ -4,13 +4,37 @@ import $ from 'jquery';
 import {fetch_addr} from '/src/config';
 import PersonPoint from '/src/components/images/PersonPoint.vue';
 
+const props = defineProps(['map', 'init', 'curPath']);
+
 const devices = ref([]);
 const devices_comp = ref([]);
-const props = defineProps(['map']);
 const layout = ref({
   width: 0,
   height: 0,
 });
+const interval_id = ref(0);
+
+async function getPos() {
+  let mac = localStorage.getItem('mac');
+
+  let data = await fetch(fetch_addr + 'api/getpath/' + mac + '/' + props.curPath);
+  data = await data.json();
+
+  if (data[0] == undefined || data[0] == null) {
+    return;
+  }
+
+  let arr = Object.entries(data[0]);
+  devices.value = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    devices.value.push({
+      mac: arr[i][0],
+      coords: JSON.parse(arr[i][1]),
+      idx: i,
+    });
+  }
+}
 
 onMounted(() => {
   fetch(fetch_addr + 'api/getlayout')
@@ -20,25 +44,12 @@ onMounted(() => {
     layout.value.height = data.height
   });
 
-  setInterval( async function get() {
-    let data = await fetch(fetch_addr + 'api/getall');
-    data = await data.json();
+  interval_id.value = setInterval(getPos , 100);
+});
 
-    if (data[0] == undefined || data[0] == null) {
-      return;
-    }
-
-    let arr = Object.entries(data[0]);
-    devices.value = [];
-
-    for (let i = 0; i < arr.length; i++) {
-      devices.value.push({
-        mac: arr[i][0],
-        coords: JSON.parse(arr[i][1]),
-        idx: i,
-      });
-    }
-  }, 100)
+watch(props.init, () => {
+  clearInterval(interval_id.value);
+  interval_id.value = setInterval(getPos , 100);
 });
 
 watch(() => ({devices: devices.value, updated: props.map.updated}), () => {
