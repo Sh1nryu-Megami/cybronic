@@ -24,8 +24,24 @@ class GetPath extends AbstractController
         }
         $n = count($content['graph']);
         if (array_key_exists($point, $graph) && addToNearest($graph, $mac)) {
-            return $this->json(BFS($n + 1, $graph, $point, $mac));
+            $path = BFS($n + 1, $graph, $point, $mac);
+            $post = array();
+            foreach ($path as $v) {
+                $post[] = array('x' => $graph[$v]['x'], 'y' => $graph[$v]['y']);
+            }
+
+            if (count($post) >= 2) {
+                $delta_x = abs($post[1]['x'] - $post[0]['x']);
+                $delta_y = abs($post[1]['y'] - $post[0]['y']);
+
+                if ($delta_x > $delta_y) {
+                    $post[0]['y'] = $post[1]['y'];
+                } else {
+                    $post[0]['x'] = $post[1]['x'];
+                }
+            }
+            return $this->json($post);
         }
-        return $this->json(['error']);
+        return $this->json('error');
     }
 }

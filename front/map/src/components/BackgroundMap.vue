@@ -50,12 +50,9 @@ onBeforeUnmount(() => {
   document.removeEventListener('resize', handlers.value.resize);
 });
 
-// function zoom(newX, newY, newH, newW) {
-//   position_data.value.map.h = newH;
-//   position_data.value.map.w = newW;
-//   position_data.value.map.x = newX;
-//   position_data.value.map.y = newY;
-// }
+function setUpdated() {
+  position_data.value.updated = !position_data.value.updated;
+}
 
 </script>
 
@@ -63,7 +60,7 @@ onBeforeUnmount(() => {
   <div :class="$style.bg_map" ref="img_ref">
     <img id="map" :src="fetch_addr + 'api/getview'" />
     <PersonPositioning :map="position_data" :init="props.init" :curPath="props.curPath" />
-    <SideButtons />
+    <SideButtons :update="setUpdated"/>
   </div>
 </template>
 
