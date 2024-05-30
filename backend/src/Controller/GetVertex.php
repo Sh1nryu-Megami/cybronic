@@ -12,7 +12,7 @@ use Exception;
 class GetVertex extends AbstractController
 {
     #[Route('api/getvertex/{mac}/{x}/{y}', methods: ['GET', 'POST'])]
-    public function getMacByName(string $mac, float $x, float $y): Response
+    public function getVertex(string $mac, float $x, float $y): Response
     {
       $host = 'localhost';
 
