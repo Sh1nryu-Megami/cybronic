@@ -2,6 +2,8 @@
 import {ref} from 'vue';
 import {fetch_addr} from '/src/config.js';
 
+const props = defineProps(['setInitTrue']);
+
 const id = ref('');
 const error = ref(false);
 const closed = ref(false);
@@ -25,6 +27,10 @@ async function checkID() {
   if (data.answer !== undefined) {
     localStorage.setItem('mac', data.answer);
     closed.value = true;
+
+    setTimeout(() => {
+      props.setInitTrue();
+    }, 1000);
   }
 }
 
@@ -83,8 +89,8 @@ async function checkID() {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
   height: 80%;
+  width: 100%;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   background-color: colors.$menu_bg;
@@ -93,6 +99,16 @@ async function checkID() {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: show 0.5s ease-in-out 1;
+}
+
+@keyframes show {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 80%;
+  }
 }
 
 .text {

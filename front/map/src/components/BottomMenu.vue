@@ -8,7 +8,7 @@ import ClearSvg from '/src/assets/clear_button.svg';
 import SettingsSvg from '/src/assets/settings.svg';
 import ArrowSvg from '/src/assets/arrow.svg';
 
-const props = defineProps(['setPath']);
+const props = defineProps(['setPath', 'setInitFalse']);
 
 const input_text = ref('');
 const rooms = ref([]);
@@ -49,7 +49,10 @@ function clearInput() {
 
 function showPath(event) {
   current_path.value = props.setPath(event.currentTarget.getAttribute('value'));
-  // TODO: сделать отображения маршрута
+}
+
+function openSettings() {
+  props.setInitFalse();
 }
 
 </script>
@@ -84,7 +87,7 @@ function showPath(event) {
           </div>
         </div>
       </div>
-      <button v-if="!(input_text !== '' || current_path !== null)" :class="$style.settings">
+      <button v-if="!(input_text !== '' || current_path !== null)" :class="$style.settings" @click="openSettings">
         <img :src="SettingsSvg" alt="settings" />
       </button>
       <button v-else :class="$style.clear_button" @click="clearInput">

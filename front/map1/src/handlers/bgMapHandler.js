@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 export function setStartPosWrapper(position_data) {
   function setStartPos(event) {
-    event.preventDefault()
+    // event.preventDefault()
     let fingers = []
     for (let touch of event.touches) {
       let x = touch.pageX 
@@ -10,7 +10,7 @@ export function setStartPosWrapper(position_data) {
       fingers.push({ x, y })
     }
     position_data.value.startFingers = fingers;
-    // console.log("Tstart");
+    console.log("Tstart");
     // console.log(fingers);
 
     if (position_data.value.touched == false) {
@@ -30,7 +30,7 @@ export function setStartPosWrapper(position_data) {
 
 export function setEndPosWrapper(position_data) {
   function setEndPos(event) {
-    event.preventDefault()
+    // event.preventDefault()
     // console.log("TEnd");
 
     if (event.touches.length == 0) {
@@ -43,7 +43,7 @@ export function setEndPosWrapper(position_data) {
 
 export function setCancelPosWrapper(position_data) {
   function setCancelPos(event) {
-    event.preventDefault()
+    // event.preventDefault()
     // console.log("TCancel");
 
     if (event.touches.length == 0) {
@@ -56,7 +56,7 @@ export function setCancelPosWrapper(position_data) {
 
 export function setMovePosWrapper(position_data) {
   function setMovePos(event) {
-    event.preventDefault();
+    // event.preventDefault();
     // console.log("TMove");
     position_data.value.updated = !position_data.value.updated;
 
