@@ -1,1 +1,0 @@
-export const fetch_addr = "http://192.168.1.149/";
